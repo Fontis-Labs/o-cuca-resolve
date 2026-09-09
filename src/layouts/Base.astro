@@ -5,14 +5,26 @@ import { site, telUrl } from '../lib/site';
 interface Props {
   title: string;
   description: string;
+  /** Título e texto da prévia de link. Caem no padrão do site quando omitidos. */
+  shareTitle?: string;
+  shareText?: string;
   /** A página de links usa a folha sem carimbo de topo nem rodapé. */
   bare?: boolean;
   noindex?: boolean;
 }
 
-const { title, description, bare = false, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  bare = false,
+  noindex = false,
+  shareTitle = site.compartilhar_titulo,
+  shareText = site.compartilhar_texto,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/logo.jpeg', Astro.site);
+/* Cartão de compartilhamento 1200×630 (gerado de src/pages/_og-card.astro).
+   O logo sozinho tem 264px e o WhatsApp o rebaixaria a uma miniatura. */
+const ogImage = new URL('/og.jpg', Astro.site);
 
 const negocio = {
   '@context': 'https://schema.org',
@@ -54,14 +66,27 @@ const negocio = {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/logo.jpeg" />
 
+    {/* Prévia de link (WhatsApp, Instagram, Facebook, Telegram, iMessage).
+        Título e texto curtos: o WhatsApp corta por volta de duas linhas cada. */}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.nome} />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={shareTitle} />
+    <meta property="og:description" content={shareText} />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:image" content={ogImage.href} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image:secure_url" content={ogImage.href} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Problema apareceu? Chama o Cuca. Manutenção residencial e assistência técnica em Socorro-SP e região."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={shareTitle} />
+    <meta name="twitter:description" content={shareText} />
+    <meta name="twitter:image" content={ogImage.href} />
 
     {/* Fontes próprias, servidas do mesmo domínio: sem terceiro no caminho crítico. */}
     <link

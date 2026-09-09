@@ -1,0 +1,181 @@
+---
+/**
+ * GERADOR DO CARTÃO DE COMPARTILHAMENTO — página temporária.
+ *
+ * Renderiza a arte do og:image a 1400×735 (mesma proporção de 1200×630) para
+ * ser capturada e salva em `public/og.png`. Não faz parte do site: apague este
+ * arquivo depois de gerar, ou mantenha para regerar quando o texto mudar.
+ */
+import '../styles/global.css';
+import { site } from '../lib/site';
+import home from '../content/home.json';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cartão de compartilhamento</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preload" href="/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/chivomono-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+      }
+      .og {
+        position: relative;
+        width: 1400px;
+        height: 735px;
+        overflow: hidden;
+        background-color: var(--navy);
+        background-image:
+          linear-gradient(var(--grid-fine) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px),
+          linear-gradient(var(--grid-major) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+        background-size: 28px 28px, 28px 28px, 140px 140px, 140px 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 64px 80px 150px;
+        box-sizing: border-box;
+      }
+      .og__main {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        column-gap: 56px;
+      }
+      /* Réguas de margem, como na folha real. */
+      .og__rule {
+        position: absolute;
+        inset-inline: 0;
+        height: 11px;
+        background-image: repeating-linear-gradient(
+          90deg,
+          var(--line-strong) 0 1px,
+          transparent 1px 46px
+        );
+      }
+      .og__rule--top { top: 0; }
+      .og__rule--bottom { bottom: 0; transform: scaleY(-1); }
+      .og__cross {
+        position: absolute;
+        top: 26px;
+        right: 26px;
+        width: 20px;
+        height: 20px;
+        color: var(--orange);
+      }
+
+      .og__title {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 104px;
+        line-height: 0.92;
+        letter-spacing: -0.034em;
+        text-transform: uppercase;
+        color: var(--chalk);
+        margin: 0;
+      }
+      .og__title b {
+        display: block;
+        color: var(--orange);
+        font-weight: 800;
+      }
+      .og__sub {
+        margin: 32px 0 0;
+        font-family: var(--display);
+        font-size: 29px;
+        line-height: 1.4;
+        color: var(--chalk-dim);
+        max-width: 34ch;
+      }
+
+      /* Selo de autoria: o brasão em caixa de papel, como no carimbo da prancha. */
+      .og__seal {
+        border: 1px solid var(--line-strong);
+        padding: 18px;
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+        width: 276px;
+      }
+      .og__seal img {
+        width: 184px;
+        height: auto;
+        display: block;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .og__seal span {
+        font-family: var(--note);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--orange);
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      /* Carimbo inferior: os campos que fecham a folha. */
+      .og__foot {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        bottom: 62px;
+        padding-top: 20px;
+        border-top: 2px solid var(--orange);
+        display: flex;
+        justify-content: space-between;
+        gap: 32px;
+        font-family: var(--note);
+        font-size: 19px;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--chalk);
+      }
+      .og__foot b {
+        color: var(--orange);
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="og">
+      <span class="og__rule og__rule--top"></span>
+      <span class="og__rule og__rule--bottom"></span>
+      <svg class="og__cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="M12 2v20" /><path d="M2 12h20" />
+      </svg>
+
+      <div class="og__main">
+       <div>
+        <h1 class="og__title">
+          {home.hero_titulo}<b>{home.hero_destaque}</b>
+        </h1>
+        <p class="og__sub">
+          Elétrica, hidráulica, reparos, montagem, eletrodomésticos e computadores.
+          Um contato só.
+        </p>
+       </div>
+
+      <div class="og__seal">
+        <img src="/logo.jpeg" alt="" />
+        <span>{site.regiao}</span>
+      </div>
+      </div>
+
+      <div class="og__foot">
+        <span>{site.categoria}</span>
+        <span><b>{site.whatsapp_exibicao}</b></span>
+      </div>
+    </div>
+  </body>
+</html>

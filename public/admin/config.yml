@@ -48,6 +48,14 @@ collections:
             widget: text
             hint: Texto que aparece pronto pro cliente quando ele clica no botão.
           - { name: email, label: E-mail, widget: string }
+          - name: compartilhar_titulo
+            label: 'Prévia de link — título'
+            widget: string
+            hint: Aparece em negrito quando o link é enviado no WhatsApp. Curto, até ~60 caracteres.
+          - name: compartilhar_texto
+            label: 'Prévia de link — texto'
+            widget: text
+            hint: Linha cinza abaixo do título na prévia do WhatsApp. Até ~120 caracteres.
 
       # ---------------------------------------------------------------
       - name: home
