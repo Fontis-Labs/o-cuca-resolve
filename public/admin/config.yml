@@ -13,8 +13,8 @@ backend:
   # e descomente a linha abaixo com a URL dele:
   # base_url: https://sua-instancia.workers.dev
 
-site_url: https://ocucaresolve.com.br
-display_url: https://ocucaresolve.com.br
+site_url: https://o-cuca-resolve.vercel.app
+display_url: https://o-cuca-resolve.vercel.app
 logo_url: /favicon.svg
 
 locale: pt
