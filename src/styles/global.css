@@ -549,9 +549,18 @@ h3 {
   border-top: 1px solid var(--line-strong);
   padding-top: var(--s-3);
 }
+/* O h2 existe pela hierarquia (a folha 01 não pode ir de h1 direto a h3);
+   visualmente ele flui como uma frase só com o texto que o segue. */
+.circuit__head {
+  margin-bottom: var(--s-3);
+  max-width: 74ch;
+}
+.circuit__head > * {
+  display: inline;
+}
 .circuit__caption {
   display: block;
-  margin-bottom: var(--s-3);
+  font-weight: 500;
   max-width: 70ch;
   line-height: 1.7;
 }
@@ -938,8 +947,71 @@ h3 {
   font-weight: 700;
 }
 
-.creed {
+/* A virada da folha 03: as recusas acima usam tracejado e pontilhado; este
+   bloco usa traço CHEIO, que é o peso que a legenda reserva para o que é
+   atendido. A composição passa a dizer o argumento sozinha. */
+.handoff {
   margin-top: var(--s-5);
+  border-top: 2px solid var(--ink-live);
+  padding-top: var(--s-3);
+}
+.handoff__title {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  max-inline-size: 24ch;
+}
+.handoff__lead {
+  margin-top: var(--s-2);
+  font-size: 1rem;
+  color: var(--chalk-dim);
+  max-inline-size: 58ch;
+}
+.handoff__notes {
+  display: grid;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+@media (min-width: 860px) {
+  .handoff__notes {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+  }
+}
+.handoff__note .note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+/* Mesmo tique da tabela de limites, porém cheio: fechamento do sistema. */
+.handoff__note .note::before {
+  content: '';
+  width: 26px;
+  height: 0;
+  flex: none;
+  border-top: 2px solid var(--ink-live);
+}
+.handoff__note h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.25;
+  margin-bottom: 0.3rem;
+}
+.handoff__note p {
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+  max-inline-size: 40ch;
+}
+
+/* O laranja passou a significar "isto nós fazemos" nas notas acima. Estas são
+   regras de conduta, não oferta: ficam em régua neutra para não competir. */
+.creed {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line);
   display: grid;
   gap: var(--s-4);
 }
@@ -950,7 +1022,7 @@ h3 {
   }
 }
 .creed__item {
-  border-top: 2px solid var(--ink-live);
+  border-top: 1.5px solid var(--line-strong);
   padding-top: var(--s-2);
 }
 .creed__item h3 {
@@ -1056,7 +1128,7 @@ h3 {
     gap: var(--gutter);
   }
 }
-.colophon h4 {
+.colophon h3 {
   font-family: var(--note);
   font-size: 0.625rem;
   font-weight: 600;

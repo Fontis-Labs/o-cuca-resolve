@@ -409,6 +409,26 @@ filled path, because it is another company's logotype and may not be redrawn.
 
 **The Miter Rule.** Icons are drawn, not imported. Square caps, miter joins, a 24 grid, size-compensated stroke weight, and no rounded terminals anywhere. A rounded-cap icon set would contradict every other line on the page.
 
+### Handoff (`.handoff`)
+
+O bloco que vira a recusa em serviço, na folha 03. Fecha o sistema de pesos de
+traço: a tabela de limites acima usa **pontilhado** (fora do escopo) e
+**tracejado** (condicional); este bloco usa **cheio** — o peso que a legenda da
+folha 02 reserva para "atendimento direto". A composição passa a dizer o
+argumento sem precisar de texto explicando.
+
+| Parte | Valor |
+|---|---|
+| Régua do bloco | `border-top: 2px solid var(--ink-live)` |
+| Título | `clamp(1.15rem, 2.4vw, 1.5rem)` / 800 / `-0.02em` / caixa alta / `24ch` |
+| Notas | grid de 3 colunas a partir de 860px, `gap: var(--gutter)` |
+| Tique da nota | `border-top: 2px solid var(--ink-live)`, 26px — mesma geometria do tique de `.limit__verdict`, porém cheio |
+| Índice da nota | `Nota 01`–`Nota 03` em `.note .note--live` (dado real, passa no teste da regra No-Eyebrow) |
+
+**Regra:** o laranja neste bloco significa "isto nós fazemos". Por isso
+`.creed__item`, que traz princípios de conduta e não oferta, usa régua neutra
+(`1.5px solid var(--line-strong)`) — princípio não compete com serviço.
+
 ## Do's and Don'ts
 
 ### Do:

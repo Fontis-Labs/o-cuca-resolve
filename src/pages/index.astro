@@ -65,9 +65,10 @@ const foraDeEscopo = new Set(['Encaminhamos', 'Recusamos']);
 
         <!-- O percurso, desenhado. A ação primária mora sobre o nó 01. -->
         <div class="circuit" id="como-funciona" data-circuit>
-          <p class="note circuit__caption">
-            {home.etapas_titulo} &mdash; {home.etapas_texto}
-          </p>
+          <div class="circuit__head">
+            <h2 class="note circuit__caption">{home.etapas_titulo}</h2>
+            <p class="note circuit__caption">{home.etapas_texto}</p>
+          </div>
 
           <div class="circuit__rail" aria-hidden="true">
             <svg class="circuit__svg" viewBox="0 0 1000 3" preserveAspectRatio="none">
@@ -190,6 +191,23 @@ const foraDeEscopo = new Set(['Encaminhamos', 'Recusamos']);
             </div>
           ))}
         </dl>
+
+        <!-- A virada: mesma gramática de linha da tabela acima, mas em traço
+             cheio — o peso que a legenda define como "isto nós fazemos". -->
+        <section class="handoff">
+          <h3 class="handoff__title">{home.encaminhamento_titulo}</h3>
+          <p class="handoff__lead">{home.encaminhamento_texto}</p>
+
+          <ol class="handoff__notes">
+            {home.encaminhamento_itens.map((item, i) => (
+              <li class="handoff__note">
+                <span class="note note--live">Nota {String(i + 1).padStart(2, '0')}</span>
+                <h4>{item.titulo}</h4>
+                <p>{item.texto}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         <div class="creed">
           {home.confianca_itens.map((item) => (

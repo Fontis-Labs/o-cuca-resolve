@@ -82,6 +82,18 @@ Cinco famílias de serviço (a arquitetura pública oficial):
 | Eletrodomésticos | Diagnóstico e reparo apenas de linhas e equipamentos dominados | Sempre dizer "equipamentos selecionados" e confirmar marca/modelo antes |
 | Computadores | Diagnóstico, limpeza, formatação, configuração, upgrades, solução de lentidão | Backup, perda de dados e reparo de placa exigem escopo definido antes |
 
+**Serviço de encaminhamento (confirmado pelo dono em 2026-09-09).** O que está
+fora do escopo de execução não encerra o atendimento. Sem assumir a execução, o
+Cuca pode:
+
+- identificar qual especialidade o serviço exige e **indicar o profissional** que faz;
+- **mapear o custo** esperado, para o cliente comparar orçamento com critério;
+- **acompanhar a execução** de terceiros, seguindo como contato único do chamado.
+
+Isso converte a recusa em serviço e é o que separa a marca do "faz-tudo" que
+simplesmente diz não. Vale para clientes residenciais e é especialmente forte no
+B2B, onde a proposta já é centralizar chamados em um contato só.
+
 Restrições duras:
 
 - **Não publicar valores.** Decisão do dono (2026-09-09), alinhada ao kit: a
@@ -131,8 +143,10 @@ página precisa ser construída pelo **método**, não por prova social.
 
 1. **O método é a prova.** Sem fotos e sem avaliações, o que convence é mostrar
    exatamente como o atendimento funciona, passo a passo, antes de pedir contato.
-2. **Recusar é uma credencial.** Dizer em público o que não se faz — e que se
-   encaminha — é o argumento mais forte contra o "faz-tudo" que improvisa.
+2. **Recusar é uma credencial, encaminhar é o serviço.** Dizer em público o que
+   não se faz é o argumento mais forte contra o "faz-tudo" que improvisa — mas a
+   recusa nunca termina em "não": ela vira indicação, mapeamento de custo e
+   acompanhamento.
 3. **Uma mensagem, não um formulário.** Toda ação leva ao WhatsApp com o assunto
    já preenchido; nunca pedir mais dados do que uma conversa pediria.
 4. **Amplitude com limite explícito.** Comunicar as cinco famílias sempre com sua

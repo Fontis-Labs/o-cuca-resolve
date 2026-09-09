@@ -1,11 +1,9 @@
 {
   "seo_titulo": "SOCORRO! O CUCA RESOLVE — Marido de aluguel e assistência técnica em Socorro-SP",
   "seo_descricao": "Manutenção residencial e assistência técnica em Socorro-SP e região: elétrica, hidráulica, pequenos reparos, montagem de móveis, eletrodomésticos selecionados e manutenção de computadores. Orçamento pelo WhatsApp.",
-
   "hero_titulo": "Problema apareceu?",
   "hero_destaque": "Chama o Cuca.",
   "hero_texto": "Um contato só para os pequenos problemas do dia a dia: elétrica, hidráulica, reparos, montagem, eletrodomésticos e computadores. Você manda uma foto, recebe a estimativa e aprova antes de qualquer coisa acontecer.",
-
   "etapas_titulo": "Como funciona",
   "etapas_texto": "Sem enrolação e sem surpresa: nada é executado antes de você aprovar.",
   "etapas": [
@@ -22,7 +20,6 @@
       "texto": "Data e período combinados, chegada avisada, serviço testado na sua frente e valor final confirmado no encerramento."
     }
   ],
-
   "fronteira_titulo": "O que o Cuca não faz",
   "fronteira_texto": "Quase ninguém publica isto, e é exatamente por isso que está aqui. Serviço aceito no improviso é serviço malfeito — preferimos dizer não e indicar quem faz.",
   "fronteira_itens": [
@@ -43,7 +40,22 @@
       "texto": "Backup, recuperação de dados e reparo de placa: escopo e responsabilidade ficam definidos por escrito antes de começar."
     }
   ],
-
+  "encaminhamento_titulo": "Dizer não não é te deixar na mão",
+  "encaminhamento_texto": "O que sai do nosso escopo continua sendo um problema na sua casa. Se você quiser, a gente segue junto do lado de fora — sem assumir a execução, mas sem largar você procurando sozinho.",
+  "encaminhamento_itens": [
+    {
+      "titulo": "Indicamos quem faz",
+      "texto": "Identificamos qual especialidade o serviço exige e indicamos um profissional para o trabalho."
+    },
+    {
+      "titulo": "Mapeamos o custo",
+      "texto": "Levantamos com você o que o serviço deve custar, para comparar orçamento com critério em vez de aceitar o primeiro que aparecer."
+    },
+    {
+      "titulo": "Acompanhamos até o fim",
+      "texto": "Se preferir, seguimos como seu contato: ajudamos a organizar o agendamento e acompanhamos o andamento até o serviço terminar."
+    }
+  ],
   "confianca_titulo": "Transparência antes de tudo",
   "confianca_itens": [
     {
@@ -59,7 +71,6 @@
       "texto": "Você recebe por escrito o que foi feito e quanto custou, com validade de 7 dias no orçamento."
     }
   ],
-
   "publicos_titulo": "Quem atendemos",
   "publicos_texto": "Do apartamento à pousada, o mesmo contato resolve.",
   "publicos": [
@@ -80,7 +91,6 @@
       "texto": "Comércios, escritórios e prestadores que não querem procurar um profissional diferente para cada problema."
     }
   ],
-
   "cta_titulo": "Não sabe quem chamar?",
   "cta_texto": "Manda uma mensagem contando o que precisa. É rápido, é sem compromisso, e você aprova antes de qualquer coisa acontecer."
 }

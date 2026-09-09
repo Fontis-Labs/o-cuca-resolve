@@ -3,11 +3,10 @@
 # Painel do site (Sveltia CMS). Ele grava direto nos arquivos JSON de src/content/,
 # e cada publicação vira um commit no GitHub, que dispara um novo deploy.
 #
-# TROQUE `repo` pelo caminho real do repositório no GitHub (usuario/repositorio).
 
 backend:
   name: github
-  repo: SEU_USUARIO/o-cuca-resolve
+  repo: Fontis-Labs/o-cuca-resolve
   branch: main
   # Login por token pessoal funciona sem nenhum servidor extra.
   # Para habilitar o botão "Entrar com GitHub", publique o Sveltia CMS Authenticator
@@ -92,6 +91,16 @@ collections:
                 widget: select
                 options: ['Encaminhamos', 'Recusamos', 'Avaliamos antes', 'Combinamos antes']
               - { name: texto, label: Explicação, widget: text }
+
+          - { name: encaminhamento_titulo, label: 'Encaminhamento — título', widget: string }
+          - { name: encaminhamento_texto, label: 'Encaminhamento — texto', widget: text }
+          - name: encaminhamento_itens
+            label: 'Encaminhamento — o que fazemos quando não é com a gente'
+            widget: list
+            summary: '{{fields.titulo}}'
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Descrição, widget: text }
 
           - { name: publicos_titulo, label: 'Quem atendemos — título', widget: string }
           - { name: publicos_texto, label: 'Quem atendemos — texto', widget: text }
