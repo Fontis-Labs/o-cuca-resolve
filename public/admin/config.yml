@@ -1,0 +1,195 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+#
+# Painel do site (Sveltia CMS). Ele grava direto nos arquivos JSON de src/content/,
+# e cada publicação vira um commit no GitHub, que dispara um novo deploy.
+#
+# TROQUE `repo` pelo caminho real do repositório no GitHub (usuario/repositorio).
+
+backend:
+  name: github
+  repo: SEU_USUARIO/o-cuca-resolve
+  branch: main
+  # Login por token pessoal funciona sem nenhum servidor extra.
+  # Para habilitar o botão "Entrar com GitHub", publique o Sveltia CMS Authenticator
+  # e descomente a linha abaixo com a URL dele:
+  # base_url: https://sua-instancia.workers.dev
+
+site_url: https://ocucaresolve.com.br
+display_url: https://ocucaresolve.com.br
+logo_url: /favicon.svg
+
+locale: pt
+
+media_folder: public/media
+public_folder: /media
+
+collections:
+  - name: conteudo
+    label: Conteúdo do site
+    files:
+      # ---------------------------------------------------------------
+      - name: site
+        label: Identidade e contato
+        file: src/content/site.json
+        icon: contact_page
+        description: Nome, telefone, e-mail e região de atendimento. Aparece no site inteiro.
+        fields:
+          - { name: nome, label: Nome do negócio, widget: string }
+          - { name: assinatura, label: Assinatura (frase da marca), widget: string }
+          - { name: categoria, label: Categoria, widget: string, hint: 'Ex.: Manutenção residencial e assistência técnica' }
+          - { name: regiao, label: Região de atendimento, widget: string }
+          - name: whatsapp
+            label: WhatsApp (só números, com 55 e DDD)
+            widget: string
+            pattern: ['^55\d{10,11}$', 'Use apenas números, começando com 55. Ex.: 5519997916128']
+            hint: 'Formato internacional sem símbolos. Ex.: 5519997916128'
+          - { name: whatsapp_exibicao, label: WhatsApp como aparece na tela, widget: string, hint: 'Ex.: (19) 99791-6128' }
+          - name: whatsapp_mensagem
+            label: Mensagem que já vem escrita no WhatsApp
+            widget: text
+            hint: Texto que aparece pronto pro cliente quando ele clica no botão.
+          - { name: email, label: E-mail, widget: string }
+
+      # ---------------------------------------------------------------
+      - name: home
+        label: Página inicial
+        file: src/content/home.json
+        icon: home
+        description: Todos os textos da página principal.
+        fields:
+          - name: seo_titulo
+            label: Título no Google e na aba do navegador
+            widget: string
+            hint: Ideal até 60 caracteres.
+          - name: seo_descricao
+            label: Descrição no Google
+            widget: text
+            hint: Ideal até 155 caracteres.
+
+          - { name: hero_titulo, label: 'Topo — primeira linha', widget: string, hint: 'Ex.: Problema apareceu?' }
+          - { name: hero_destaque, label: 'Topo — segunda linha (sai em laranja)', widget: string, hint: 'Ex.: Chama o Cuca.' }
+          - { name: hero_texto, label: 'Topo — texto', widget: text }
+
+          - { name: etapas_titulo, label: 'Como funciona — título', widget: string }
+          - { name: etapas_texto, label: 'Como funciona — texto', widget: text }
+          - name: etapas
+            label: 'Como funciona — etapas'
+            widget: list
+            summary: '{{fields.titulo}}'
+            fields:
+              - { name: titulo, label: Título da etapa, widget: string }
+              - { name: texto, label: Explicação, widget: text }
+
+          - { name: fronteira_titulo, label: 'O que não fazemos — título', widget: string }
+          - { name: fronteira_texto, label: 'O que não fazemos — texto', widget: text }
+          - name: fronteira_itens
+            label: 'O que não fazemos — limites'
+            widget: list
+            summary: '{{fields.verdict}}'
+            fields:
+              - name: verdict
+                label: Veredito
+                widget: select
+                options: ['Encaminhamos', 'Recusamos', 'Avaliamos antes', 'Combinamos antes']
+              - { name: texto, label: Explicação, widget: text }
+
+          - { name: publicos_titulo, label: 'Quem atendemos — título', widget: string }
+          - { name: publicos_texto, label: 'Quem atendemos — texto', widget: text }
+          - name: publicos
+            label: 'Quem atendemos — públicos'
+            widget: list
+            summary: '{{fields.titulo}}'
+            fields:
+              - { name: titulo, label: Público, widget: string }
+              - { name: texto, label: Descrição, widget: text }
+
+          - { name: confianca_titulo, label: 'Transparência — título', widget: string }
+          - name: confianca_itens
+            label: 'Transparência — itens'
+            widget: list
+            summary: '{{fields.titulo}}'
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Descrição, widget: text }
+
+          - { name: cta_titulo, label: 'Chamada final — título', widget: string }
+          - { name: cta_texto, label: 'Chamada final — texto', widget: text }
+
+      # ---------------------------------------------------------------
+      - name: services
+        label: Serviços
+        file: src/content/services.json
+        icon: handyman
+        description: As frentes de atendimento que aparecem na página inicial.
+        fields:
+          - { name: titulo, label: Título da seção, widget: string }
+          - { name: texto, label: Texto da seção, widget: text }
+          - name: itens
+            label: Serviços
+            widget: list
+            summary: '{{fields.titulo}}'
+            fields:
+              - name: icone
+                label: Ícone
+                widget: select
+                options:
+                  - { label: Casa, value: casa }
+                  - { label: Elétrica, value: eletrica }
+                  - { label: Hidráulica, value: hidraulica }
+                  - { label: Eletrodomésticos, value: eletro }
+                  - { label: Computadores, value: computador }
+              - name: nivel
+                label: Alcance
+                widget: select
+                default: core
+                options:
+                  - { label: 'Frente principal (traço cheio)', value: core }
+                  - { label: 'Escopo restrito (tracejado)', value: spec }
+              - { name: titulo, label: Nome do serviço, widget: string }
+              - { name: resumo, label: Resumo, widget: text }
+              - name: regra
+                label: Regra de proteção
+                widget: text
+                hint: O limite dessa frente. Aparece na página como anotação, do lado do serviço.
+              - name: exemplos
+                label: Exemplos do que é feito
+                widget: list
+                summary: '{{fields.texto}}'
+                fields:
+                  - { name: texto, label: Exemplo, widget: string }
+
+      # ---------------------------------------------------------------
+      - name: links
+        label: Página de links
+        file: src/content/links.json
+        icon: link
+        description: Os botões da página /links (WhatsApp, Instagram, lojas...).
+        fields:
+          - { name: titulo, label: Título da página, widget: string }
+          - { name: texto, label: Texto de apresentação, widget: text }
+          - name: itens
+            label: Botões
+            widget: list
+            summary: '{{fields.rotulo}}'
+            fields:
+              - name: icone
+                label: Ícone
+                widget: select
+                options:
+                  - { label: WhatsApp, value: whatsapp }
+                  - { label: Instagram, value: instagram }
+                  - { label: Mercado Livre, value: mercadolivre }
+                  - { label: Shopee, value: shopee }
+                  - { label: E-mail, value: email }
+              - { name: rotulo, label: Nome do botão, widget: string }
+              - { name: descricao, label: Descrição curta, widget: string }
+              - name: url
+                label: Link
+                widget: string
+                required: false
+                hint: Deixe vazio no botão do WhatsApp — ele usa o número cadastrado em "Identidade e contato".
+              - name: destaque
+                label: Destacar em verde
+                widget: boolean
+                default: false
+                required: false

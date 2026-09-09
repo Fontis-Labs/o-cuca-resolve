@@ -1,0 +1,136 @@
+---
+import Icon from './Icon.astro';
+import links from '../content/links.json';
+import { site, whatsappUrl, telUrl } from '../lib/site';
+
+const ano = new Date().getFullYear();
+/* URLs ainda com placeholder do CMS não viram link: um TROCAR_PELO_* publicado
+   é um 404 com cara de canal oficial. */
+const externos = links.itens.filter(
+  (item) => item.icone !== 'whatsapp' && item.url && !item.url.includes('TROCAR_PELO'),
+);
+---
+
+<!-- Carimbo final: os campos que fecham uma prancha. -->
+<footer class="colophon">
+  <div class="sheet__inner">
+    <div class="colophon__grid">
+      <div>
+        <div class="colophon__sig">
+          <img src="/logo.jpeg" alt="" width="40" height="40" loading="lazy" decoding="async" />
+          <strong>Socorro!<br />O Cuca Resolve</strong>
+        </div>
+        <p class="note">{site.assinatura}</p>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>
+            <a href={whatsappUrl()} target="_blank" rel="noopener">
+              WhatsApp {site.whatsapp_exibicao}
+            </a>
+          </li>
+          <li><a href={telUrl()}>Ligar {site.whatsapp_exibicao}</a></li>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li>{site.regiao}</li>
+          <li>Sob agendamento e disponibilidade</li>
+          <li>Orçamento válido por 7 dias</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Canais</h4>
+        <ul>
+          <li><a href="/links">Todos os links</a></li>
+          {externos.map((item) => (
+            <li><a href={item.url} target="_blank" rel="noopener">{item.rotulo}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="colophon__foot">
+      <span class="note">&copy; {ano} {site.nome}</span>
+      <span class="note">{site.categoria} &middot; {site.regiao}</span>
+      <span class="note">
+        Desenvolvido por
+        <a
+          href="https://fontis-labs.github.io/website/"
+          target="_blank"
+          rel="noopener"
+          class="colophon__by"
+        >Fontis Labs</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<a
+  href={whatsappUrl()}
+  class="dock"
+  target="_blank"
+  rel="noopener"
+  aria-label="Falar no WhatsApp"
+>
+  <Icon name="whatsapp" size={22} />
+  <span>Chamar o Cuca</span>
+</a>
+
+<script is:inline>
+  /* Duas coisas, uma varredura de rolagem.
+     1. O traço laranja do circuito se desenha quando entra na tela — o único
+        momento autoral da página.
+     2. A ação flutuante só aparece depois que a ação do topo sai de vista.
+     Varredura em vez de IntersectionObserver: numa rolagem rápida o elemento
+     atravessa a viewport inteira entre dois frames e o IO não dispara callback
+     nenhum, deixando o traço apagado para sempre. */
+  (function () {
+    var doc = document;
+    if (!window.requestAnimationFrame) return;
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var circuit = doc.querySelector('[data-circuit]');
+    var dock = doc.querySelector('.dock');
+    var sentinel = doc.querySelector('[data-dock-after]');
+
+    /* O CSS entrega o traço já desenhado. Só armamos a animação quando há
+       rAF e o usuário não pediu menos movimento. */
+    var animate = circuit && !reduce;
+    if (animate) doc.documentElement.classList.add('js-draw');
+
+    if (dock && sentinel) dock.classList.add('dock--auto');
+
+    var ticking = false;
+
+    function sweep() {
+      ticking = false;
+
+      if (animate && !circuit.classList.contains('is-drawn')) {
+        if (circuit.getBoundingClientRect().top < window.innerHeight * 0.85) {
+          circuit.classList.add('is-drawn');
+        }
+      }
+
+      if (dock && sentinel) {
+        dock.classList.toggle('dock--on', sentinel.getBoundingClientRect().bottom < 0);
+      }
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(sweep);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    sweep();
+  })();
+</script>

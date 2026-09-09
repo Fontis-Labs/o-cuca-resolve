@@ -1,0 +1,70 @@
+{
+  "titulo": "O que o Cuca resolve",
+  "texto": "Cinco frentes de atendimento. Cada uma vem com o seu limite escrito do lado — porque largura só vale alguma coisa quando a fronteira está declarada.",
+  "itens": [
+    {
+      "icone": "casa",
+      "nivel": "core",
+      "titulo": "Casa",
+      "resumo": "Pequenos reparos, instalações e montagens que ficaram para depois.",
+      "regra": "Sob avaliação quando houver fixação estrutural, grandes dimensões ou risco elevado.",
+      "exemplos": [
+        { "texto": "Montagem de móveis" },
+        { "texto": "Suportes de TV e prateleiras" },
+        { "texto": "Cortinas, quadros e varões" },
+        { "texto": "Ajustes e pequenos reparos" }
+      ]
+    },
+    {
+      "icone": "eletrica",
+      "nivel": "core",
+      "titulo": "Elétrica",
+      "resumo": "Trocas e reparos elétricos do dia a dia, dentro do que é seguro fazer.",
+      "regra": "Recusamos o que for incompatível com treinamento, ferramenta ou exigência de segurança.",
+      "exemplos": [
+        { "texto": "Tomadas e interruptores" },
+        { "texto": "Luminárias e lâmpadas" },
+        { "texto": "Chuveiros e resistências" },
+        { "texto": "Ventiladores de teto" }
+      ]
+    },
+    {
+      "icone": "hidraulica",
+      "nivel": "core",
+      "titulo": "Hidráulica",
+      "resumo": "Aquele vazamento que insiste em voltar.",
+      "regra": "Grandes reformas e intervenções estruturais são encaminhadas a um especialista.",
+      "exemplos": [
+        { "texto": "Torneiras e sifões" },
+        { "texto": "Registros e descargas" },
+        { "texto": "Pequenos vazamentos" },
+        { "texto": "Instalações simples" }
+      ]
+    },
+    {
+      "icone": "eletro",
+      "nivel": "spec",
+      "titulo": "Eletrodomésticos",
+      "resumo": "Diagnóstico e reparo de linhas e equipamentos selecionados.",
+      "regra": "Escopo restrito. Só atendemos as linhas que dominamos — confirme marca e modelo antes.",
+      "exemplos": [
+        { "texto": "Diagnóstico do defeito" },
+        { "texto": "Reparo dos equipamentos atendidos" },
+        { "texto": "Orientação quando não for reparável" }
+      ]
+    },
+    {
+      "icone": "computador",
+      "nivel": "spec",
+      "titulo": "Computadores",
+      "resumo": "PC lento, travando ou pedindo upgrade? Isso também é com o Cuca.",
+      "regra": "Escopo restrito. Backup, recuperação de dados e reparo de placa são combinados antes.",
+      "exemplos": [
+        { "texto": "Diagnóstico e limpeza" },
+        { "texto": "Formatação e configuração" },
+        { "texto": "Upgrade de SSD e memória" },
+        { "texto": "Remoção de lentidão e travamentos" }
+      ]
+    }
+  ]
+}

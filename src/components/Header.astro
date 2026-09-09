@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import { site, whatsappUrl } from '../lib/site';
+---
+
+<header class="titleblock">
+  <div class="titleblock__inner">
+    <a href="/" class="mark">
+      <img src="/logo.jpeg" alt="" width="34" height="34" class="mark__seal" />
+      <span class="mark__name">Socorro!<br /><b>O Cuca Resolve</b></span>
+    </a>
+
+    <nav class="nav" aria-label="Seções da página">
+      <a href="/#servicos">Serviços</a>
+      <a href="/#como-funciona">Como funciona</a>
+      <a href="/#fronteira">O que não fazemos</a>
+      <a href="/links">Links</a>
+    </nav>
+
+    <a
+      href={whatsappUrl()}
+      class="act"
+      target="_blank"
+      rel="noopener"
+      aria-label={`Falar no WhatsApp ${site.whatsapp_exibicao}`}
+    >
+      <Icon name="whatsapp" size={18} />
+      <span class="titleblock__cta-label">Falar no WhatsApp</span>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,41 @@
+{
+  "titulo": "Links úteis",
+  "texto": "Fale com o Cuca, acompanhe os serviços e veja o que temos à venda.",
+  "itens": [
+    {
+      "icone": "whatsapp",
+      "rotulo": "WhatsApp",
+      "descricao": "Orçamentos e agendamento",
+      "url": "",
+      "destaque": true
+    },
+    {
+      "icone": "instagram",
+      "rotulo": "Instagram",
+      "descricao": "Serviços, antes e depois e dicas",
+      "url": "https://instagram.com/TROCAR_PELO_USUARIO",
+      "destaque": false
+    },
+    {
+      "icone": "mercadolivre",
+      "rotulo": "Mercado Livre",
+      "descricao": "Nossa loja no Mercado Livre",
+      "url": "https://www.mercadolivre.com.br/TROCAR_PELO_LINK_DA_LOJA",
+      "destaque": false
+    },
+    {
+      "icone": "shopee",
+      "rotulo": "Shopee",
+      "descricao": "Nossa loja na Shopee",
+      "url": "https://shopee.com.br/TROCAR_PELO_LINK_DA_LOJA",
+      "destaque": false
+    },
+    {
+      "icone": "email",
+      "rotulo": "E-mail",
+      "descricao": "contato.cucaresolve@gmail.com",
+      "url": "mailto:contato.cucaresolve@gmail.com",
+      "destaque": false
+    }
+  ]
+}

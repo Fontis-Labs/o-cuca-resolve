@@ -1,0 +1,1367 @@
+/* ============================================================
+   SOCORRO! O CUCA RESOLVE — "A Prancha"
+   A página é uma prancha de desenho técnico: duas tintas e o papel.
+   Navy domina a superfície. Laranja é a tinta viva e marca só o que
+   está ativo ou disponível. Peso de linha carrega regra.
+   ============================================================ */
+
+/* ---------- Fontes (self-hosted, sem terceiros) ---------- */
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-latin-var.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-latin-ext-var.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Chivo Mono';
+  src: url('/fonts/chivomono-latin-var.woff2') format('woff2-variations');
+  font-weight: 100 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tintas ---------- */
+:root {
+  /* Duas tintas e o papel. Nada além disto entra na página. */
+  --navy: #0b1f3d;
+  --navy-raised: #13294d;
+  --orange: #f5811f;
+  --paper: #f4f1ea;
+
+  /* Texto sobre navy (verificado: 14.7:1 e 6.8:1) */
+  --chalk: #eef3fa;
+  --chalk-dim: #93a9c6;
+  /* Texto sobre papel (verificado: 14.4:1 e 5.2:1) */
+  --graphite: #14203a;
+  --graphite-dim: #55657f;
+  /* Laranja como texto sobre papel (verificado: 4.9:1) */
+  --orange-ink: #a8500a;
+  /* Tinta viva do contexto: cada folha resolve para o laranja legível nela. */
+  --ink-live: var(--orange);
+
+  /* Verde só existe na ação de WhatsApp — é cor de plataforma, não da marca. */
+  --whats: #25d366;
+
+  /* Traço de prancha */
+  --grid-fine: rgba(147, 169, 198, 0.07);
+  --grid-major: rgba(147, 169, 198, 0.15);
+  --grid-fine-paper: rgba(20, 32, 58, 0.05);
+  --grid-major-paper: rgba(20, 32, 58, 0.1);
+  --line: rgba(147, 169, 198, 0.34);
+  --line-strong: rgba(147, 169, 198, 0.62);
+  --line-paper: rgba(20, 32, 58, 0.26);
+  --line-paper-strong: rgba(20, 32, 58, 0.52);
+
+  --display: 'Archivo', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --note: 'Chivo Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --sheet: 1240px;
+  --margin: clamp(1.15rem, 4vw, 3rem);
+  --gutter: clamp(1.5rem, 5vw, 4.5rem);
+
+  /* Escala de espaço da prancha */
+  --s-1: 0.375rem;
+  --s-2: 0.75rem;
+  --s-3: 1.25rem;
+  --s-4: 2rem;
+  --s-5: 3.25rem;
+  --s-6: clamp(3.5rem, 9vw, 7rem);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+body {
+  font-family: var(--display);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.6;
+  background: var(--navy);
+  color: var(--chalk);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: from-font;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+button {
+  font: inherit;
+}
+
+/* ---------- Superfícies do navegador: nada fica no padrão ---------- */
+::selection {
+  background: var(--orange);
+  color: var(--navy);
+}
+:root {
+  caret-color: var(--orange);
+  accent-color: var(--orange);
+  scrollbar-color: var(--orange) var(--navy);
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
+  border: 3px solid var(--navy);
+}
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+.sheet--detail ::selection {
+  background: var(--orange);
+  color: var(--navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   A FOLHA
+   ============================================================ */
+.sheet {
+  position: relative;
+  padding-block: var(--s-6);
+}
+/* O carimbo do topo é sticky (62px): sem esta folga a âncora entrega o alvo
+   por baixo dele. Vale para toda seção e para o circuito, que virou alvo. */
+[id] {
+  scroll-margin-top: 78px;
+}
+.sheet__inner {
+  width: 100%;
+  max-width: var(--sheet);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+  position: relative;
+}
+
+/* Prancha em navy: grade de desenho de verdade sob o conteúdo. */
+.sheet--plan {
+  background-color: var(--navy);
+  color: var(--chalk);
+  background-image:
+    linear-gradient(var(--grid-fine) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px),
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+  background-position: center top;
+}
+/* Folha de detalhe em papel: densa e para leitura longa. */
+.sheet--detail {
+  background-color: var(--paper);
+  color: var(--graphite);
+  background-image:
+    linear-gradient(var(--grid-fine-paper) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-fine-paper) 1px, transparent 1px),
+    linear-gradient(var(--grid-major-paper) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major-paper) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+  background-position: center top;
+}
+.sheet--detail {
+  --line: var(--line-paper);
+  --line-strong: var(--line-paper-strong);
+  --chalk: var(--graphite);
+  --chalk-dim: var(--graphite-dim);
+  --ink-live: var(--orange-ink);
+}
+
+/* Régua da margem: ticks de 1 cm como numa prancha real. */
+.sheet__rule {
+  position: absolute;
+  inset-inline: 0;
+  height: 9px;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--line-strong) 0 1px,
+    transparent 1px 40px
+  );
+}
+.sheet__rule--top {
+  top: 0;
+}
+.sheet__rule--bottom {
+  bottom: 0;
+  transform: scaleY(-1);
+}
+
+/* Número da folha: mora na margem, como numa prancha de verdade. */
+.sheet__no {
+  position: absolute;
+  top: var(--s-4);
+  right: var(--margin);
+  color: var(--chalk-dim);
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .sheet__no {
+    display: none;
+  }
+}
+
+/* Cruz de registro nos cantos. */
+.regmark {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  color: var(--orange);
+}
+.regmark--tl {
+  top: var(--s-3);
+  left: var(--s-3);
+}
+.regmark--tr {
+  top: var(--s-3);
+  right: var(--s-3);
+}
+.regmark--br {
+  bottom: var(--s-3);
+  right: var(--s-3);
+}
+
+/* ============================================================
+   TIPOGRAFIA
+   ============================================================ */
+.display__live {
+  color: var(--ink-live);
+}
+.display {
+  font-weight: 800;
+  letter-spacing: -0.032em;
+  line-height: 0.94;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+h1.display {
+  font-size: clamp(2.35rem, 5.4vw, 4.4rem);
+  max-inline-size: 20ch;
+}
+h2.display {
+  font-size: clamp(1.9rem, 5.2vw, 3.5rem);
+  max-inline-size: 17ch;
+}
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.25;
+}
+.lead {
+  font-size: clamp(1.05rem, 0.98rem + 0.42vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--chalk-dim);
+  max-inline-size: 46ch;
+  text-wrap: pretty;
+}
+
+/* Anotação: mono só para medida, código e campo de carimbo. */
+.note {
+  font-family: var(--note);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  font-variant-numeric: tabular-nums;
+}
+.note--live {
+  color: var(--ink-live);
+}
+
+/* Cota: linha de chamada com terminador, saindo do desenho até a anotação.
+   É o gesto que o mundo da prancha usa para dizer "esta medida vale aqui". */
+.callout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: var(--s-2);
+  align-items: start;
+}
+.callout::before {
+  content: '';
+  margin-top: 0.62em;
+  height: 1px;
+  background: var(--ink-live);
+}
+.callout::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 1px;
+  height: 7px;
+  margin-top: -3px;
+  background: var(--ink-live);
+}
+
+/* ============================================================
+   CONTROLES
+   ============================================================ */
+.act {
+  --act-ink: var(--navy);
+  --act-bg: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid var(--act-bg);
+  background: var(--act-bg);
+  color: var(--act-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  /* Canto cortado: assinatura de prancha, não pílula. */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.act:hover {
+  --act-bg: #ff9436;
+}
+.act svg {
+  flex: none;
+}
+
+/* Sobre o campo laranja inundado, a ação inverte para navy — verde ali seria
+   a pior adjacência da página. */
+.act--invert {
+  --act-bg: var(--navy);
+  --act-ink: var(--paper);
+  border-color: var(--navy);
+}
+.act--invert:hover {
+  --act-bg: #1b3865;
+}
+
+
+.act-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+/* Link de texto com sublinhado de prancha. */
+.tie {
+  display: inline-block;
+  padding-block: 0.28rem;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--orange);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.24em;
+  transition: color 0.15s ease;
+}
+.tie:hover {
+  color: var(--orange);
+}
+.sheet--detail .tie:hover {
+  color: var(--orange-ink);
+}
+
+/* ============================================================
+   CARIMBO DO TOPO (cabeçalho)
+   ============================================================ */
+.titleblock {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--navy);
+  border-bottom: 1px solid var(--line-strong);
+}
+.titleblock__inner {
+  width: 100%;
+  max-width: var(--sheet);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.mark {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 46px;
+  margin-right: auto;
+  text-decoration: none;
+}
+.mark__seal {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  object-fit: contain;
+  padding: 1px;
+}
+.mark__name {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.mark__name b {
+  color: var(--orange);
+  font-weight: 800;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.7rem;
+  font-family: var(--note);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--chalk-dim);
+  transition: color 0.15s ease;
+}
+.nav a:hover {
+  color: var(--orange);
+}
+.titleblock .act {
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  font-size: 0.9375rem;
+}
+@media (max-width: 900px) {
+  .nav a {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .titleblock__cta-label {
+    display: none;
+  }
+  .titleblock .act {
+    padding: 0.55rem 0.8rem;
+  }
+  .mark__name {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================================
+   FOLHA 01 — O CIRCUITO
+   ============================================================ */
+.plan01 {
+  padding-block: clamp(2rem, 4.5vw, 3.25rem) var(--s-6);
+}
+.plan01__top {
+  display: grid;
+  gap: var(--s-5);
+  align-items: start;
+}
+@media (min-width: 1040px) {
+  .plan01__top {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--gutter);
+  }
+}
+.plan01__head {
+  max-width: 62ch;
+}
+.plan01 .lead {
+  margin-top: var(--s-3);
+}
+.plan01__act {
+  margin-top: var(--s-4);
+  align-items: center;
+}
+.plan01__tel {
+  margin-top: var(--s-3);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* O circuito do atendimento: o único momento de movimento da página. */
+.circuit {
+  margin-top: var(--s-5);
+  border-top: 1px solid var(--line-strong);
+  padding-top: var(--s-3);
+}
+.circuit__caption {
+  display: block;
+  margin-bottom: var(--s-3);
+  max-width: 70ch;
+  line-height: 1.7;
+}
+
+/* Trilho horizontal com os três nós — só quando as colunas existem. */
+.circuit__rail {
+  display: none;
+  position: relative;
+  height: 0;
+  border-top: 1px dashed var(--line-strong);
+  margin-bottom: var(--s-3);
+}
+.circuit__svg {
+  position: absolute;
+  top: -1.5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  overflow: visible;
+}
+.circuit__live {
+  stroke: var(--orange);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  /* Padrão: visível. Sem JS, sem rAF ou com movimento reduzido, o circuito
+     já está desenhado — a assinatura da página nunca depende de script. */
+  stroke-dashoffset: 0;
+}
+.js-draw .circuit__live {
+  stroke-dashoffset: 1;
+}
+.circuit__end {
+  position: absolute;
+  right: 0;
+  top: -6px;
+  width: 2px;
+  height: 13px;
+  background: var(--orange);
+}
+.circuit__dot {
+  width: 13px;
+  height: 13px;
+  margin-top: -7px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  background: var(--navy);
+}
+@media (min-width: 780px) {
+  .circuit__rail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--gutter);
+  }
+}
+
+.circuit__nodes {
+  display: grid;
+  gap: var(--s-4);
+}
+@media (min-width: 780px) {
+  .circuit__nodes {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--gutter);
+  }
+}
+.node .note {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.node h3 {
+  margin-bottom: 0.35rem;
+}
+.node p {
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+  max-inline-size: 40ch;
+}
+/* A ação primária é a etapa 01: ela mora sobre o nó, não solta acima dele. */
+.node__act {
+  margin-top: var(--s-3);
+}
+
+/* Em coluna única o circuito vira vertical, e é ele que se desenha. */
+@media (max-width: 779px) {
+  .circuit__nodes {
+    position: relative;
+    gap: var(--s-4);
+  }
+  .circuit__nodes::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 7px;
+    bottom: 7px;
+    width: 2px;
+    background: var(--orange);
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  .js-draw .circuit__nodes::before {
+    transform: scaleY(0);
+  }
+  .node {
+    position: relative;
+    padding-left: var(--s-4);
+  }
+  .node::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 13px;
+    height: 13px;
+    border: 2px solid var(--orange);
+    border-radius: 50%;
+    background: var(--navy);
+    z-index: 1;
+  }
+}
+
+/* Desenho: 1 unidade de pathLength, então o traço é exato em qualquer largura. */
+.js-draw .is-drawn .circuit__live {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (max-width: 779px) {
+  .js-draw .is-drawn .circuit__nodes::before {
+    transform: scaleY(1);
+    transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Carimbo da prancha, canto inferior direito. */
+.stamp {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--s-3);
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  padding: var(--s-2) var(--s-3);
+  width: fit-content;
+  margin-top: var(--s-4);
+}
+.stamp img {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  object-fit: contain;
+  padding: 2px;
+}
+.stamp__fields {
+  display: grid;
+  gap: 0.15rem;
+}
+.stamp__fields b {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   FOLHA — AS FAMÍLIAS
+   ============================================================ */
+.head {
+  display: grid;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+  max-width: 70ch;
+  border-top: 1.5px solid var(--line-strong);
+  padding-top: var(--s-3);
+}
+
+/* Legenda de notação: o que o traço quer dizer. */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.legend__key {
+  width: 30px;
+  height: 0;
+  flex: none;
+  border-top: 2px solid var(--chalk);
+}
+.legend__key--eval {
+  border-top-style: dashed;
+  border-color: var(--chalk-dim);
+}
+.legend__key--none {
+  border-top-style: dotted;
+  border-color: var(--graphite-dim);
+}
+
+.families {
+  display: grid;
+  gap: var(--s-3);
+}
+@media (min-width: 720px) {
+  .families {
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: var(--s-4);
+  }
+  /* Larguras desiguais de propósito: é uma prancha de famílias, não uma
+     fileira de cards. As duas últimas têm escopo restrito e ocupam menos. */
+  .fam:nth-child(1) { grid-column: span 3; }
+  .fam:nth-child(2) { grid-column: span 2; }
+  .fam:nth-child(3) { grid-column: span 2; }
+  .fam--spec { grid-column: span 3; }
+  .fam--spec:last-child { grid-column: span 4; }
+}
+
+.fam {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  /* Sem caixa e sem fundo: o peso do traço superior é que carrega a regra. */
+  border-top: 2px solid var(--graphite);
+}
+.fam--spec {
+  border-top-style: dashed;
+  border-top-color: var(--graphite-dim);
+}
+.fam__id {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-bottom: var(--s-2);
+}
+.fam__sym {
+  color: var(--ink-live);
+  flex: none;
+}
+.fam h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.fam__what {
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+}
+.fam__list {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: var(--s-3);
+}
+.fam__list li {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--chalk-dim);
+}
+.fam__list li::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.5em;
+  border: 1.5px solid var(--ink-live);
+}
+/* A regra de proteção é uma cota: aparece como anotação, não como aviso. */
+.fam__rule {
+  margin-top: var(--s-3);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--chalk-dim);
+}
+.fam__rule b {
+  display: block;
+  font-family: var(--note);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-live);
+  margin-bottom: 0.25rem;
+}
+.fam__act {
+  margin-top: auto;
+  padding-top: var(--s-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  align-self: flex-start;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ink-live);
+  text-decoration: none;
+}
+.fam__act svg {
+  transition: transform 0.15s ease;
+}
+.fam__act:hover {
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.fam__act:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   FOLHA — A FRONTEIRA
+   ============================================================ */
+.limits {
+  display: grid;
+  gap: 0;
+  border-top: 1.5px solid var(--line-strong);
+}
+.limit {
+  display: grid;
+  gap: var(--s-1) var(--s-4);
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+@media (min-width: 760px) {
+  .limit {
+    grid-template-columns: 13rem 1fr;
+  }
+}
+.limit__verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--note);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-live);
+}
+.limit__verdict::before {
+  content: '';
+  width: 26px;
+  height: 0;
+  flex: none;
+  /* Condicional = tracejado. Fora do escopo = pontilhado (traço fantasma). */
+  border-top: 2px dashed var(--ink-live);
+}
+.limit--out .limit__verdict::before {
+  border-top-style: dotted;
+}
+/* Poché: a faixa hachurada marca a região que está fora do escopo. */
+.limit--out {
+  position: relative;
+}
+.limit--out::before {
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--line-strong) 0 1px,
+    transparent 1px 5px
+  );
+}
+@media (max-width: 759px) {
+  .limit--out::before {
+    left: -0.7rem;
+  }
+}
+.limit dd {
+  margin: 0;
+}
+.limit p {
+  font-size: 1rem;
+  color: var(--chalk);
+  max-inline-size: 62ch;
+}
+.limit p b {
+  font-weight: 700;
+}
+
+.creed {
+  margin-top: var(--s-5);
+  display: grid;
+  gap: var(--s-4);
+}
+@media (min-width: 860px) {
+  .creed {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+  }
+}
+.creed__item {
+  border-top: 2px solid var(--ink-live);
+  padding-top: var(--s-2);
+}
+.creed__item h3 {
+  margin-bottom: 0.3rem;
+}
+.creed__item p {
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+}
+
+/* ============================================================
+   FOLHA — QUEM ATENDEMOS (índice)
+   ============================================================ */
+.index {
+  display: grid;
+  border-top: 1px solid var(--line-strong);
+}
+.index__row {
+  display: grid;
+  gap: var(--s-1) var(--s-4);
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+@media (min-width: 760px) {
+  .index__row {
+    grid-template-columns: 3.5rem 15rem 1fr;
+  }
+}
+.index__row h3 {
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+.index__row p {
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+  max-inline-size: 54ch;
+}
+
+/* ============================================================
+   FOLHA — AÇÃO FINAL (a única região inundada de laranja)
+   ============================================================ */
+.sheet--action {
+  background: var(--orange);
+  color: var(--navy);
+  --chalk: var(--navy);
+  --chalk-dim: #4a2a06;
+  --line: rgba(11, 31, 61, 0.3);
+  --line-strong: rgba(11, 31, 61, 0.55);
+}
+.sheet--action .display {
+  max-inline-size: 15ch;
+}
+.sheet--action .lead {
+  color: #4a2a06;
+}
+.close .lead {
+  margin-top: var(--s-3);
+}
+.close {
+  display: grid;
+  gap: var(--s-4);
+  align-items: end;
+}
+@media (min-width: 880px) {
+  .close {
+    grid-template-columns: 1fr auto;
+    gap: var(--gutter);
+  }
+}
+.close__act {
+  display: grid;
+  gap: var(--s-2);
+  justify-items: start;
+}
+.sheet--action .tie {
+  text-decoration-color: var(--navy);
+}
+.sheet--action .tie:hover {
+  color: var(--navy);
+  opacity: 0.75;
+}
+
+/* ============================================================
+   CARIMBO FINAL (rodapé)
+   ============================================================ */
+.colophon {
+  background: var(--navy);
+  border-top: 1px solid var(--line-strong);
+  padding-block: var(--s-5) var(--s-4);
+}
+.colophon__grid {
+  display: grid;
+  gap: var(--s-4);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--s-4);
+}
+@media (min-width: 760px) {
+  .colophon__grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: var(--gutter);
+  }
+}
+.colophon h4 {
+  font-family: var(--note);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: var(--s-2);
+}
+.colophon ul {
+  display: grid;
+  gap: 0.1rem;
+}
+.colophon li {
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+}
+.colophon a {
+  display: inline-block;
+  padding-block: 0.34rem;
+  text-decoration: none;
+  color: var(--chalk-dim);
+  transition: color 0.15s ease;
+}
+.colophon a:hover {
+  color: var(--orange);
+}
+.colophon__sig {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: var(--s-2);
+}
+.colophon__sig img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  object-fit: contain;
+  padding: 2px;
+}
+.colophon__sig strong {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.colophon__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+  justify-content: space-between;
+  padding-top: var(--s-3);
+}
+/* Precisa vencer `.colophon a`, que é mais específica: sem isto o crédito
+   herda o cinza dos outros links e deixa de se ler como link em repouso. */
+.colophon a.colophon__by {
+  display: inline-block;
+  padding-block: 0.3rem;
+  color: var(--orange);
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 129, 31, 0.5);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+}
+.colophon a.colophon__by:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
+}
+
+/* ============================================================
+   AÇÃO FLUTUANTE
+   ============================================================ */
+.dock {
+  position: fixed;
+  right: var(--margin);
+  bottom: var(--margin);
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 52px;
+  padding: 0.8rem 1.25rem;
+  background: var(--whats);
+  color: #04301a;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid #04301a;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%);
+  transition: background-color 0.18s ease, opacity 0.25s ease, transform 0.25s ease,
+    visibility 0.25s;
+}
+.dock:hover {
+  background: #34e277;
+}
+.dock--auto {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+}
+.dock--auto.dock--on {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+@media (max-width: 640px) {
+  .dock span {
+    display: none;
+  }
+  .dock {
+    padding: 0.85rem;
+  }
+  .colophon {
+    padding-bottom: 6rem;
+  }
+}
+
+/* ============================================================
+   FOLHA 02 — /links
+   ============================================================ */
+.terminals {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(2.5rem, 8vw, 4.5rem) var(--s-5);
+}
+.terminals__inner {
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+.terminals__head {
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.terminals__seal {
+  width: 74px;
+  height: 74px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  object-fit: contain;
+  padding: 4px;
+  margin-bottom: var(--s-3);
+}
+.terminals__head h1 {
+  font-size: clamp(1.6rem, 6vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.028em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.terminals__head h1 b {
+  color: var(--orange);
+  font-weight: 800;
+}
+.terminals__head p {
+  margin-top: var(--s-2);
+  font-size: 0.9375rem;
+  color: var(--chalk-dim);
+  text-wrap: pretty;
+}
+.terminals__list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.terminal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  /* Só cor e transform: animar padding provoca relayout a cada frame. */
+  transition: background-color 0.18s ease;
+}
+/* Barra viva na borda: cresce a partir do topo, sem mexer no layout. */
+.terminal::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--orange);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.18s ease;
+}
+.terminal:hover {
+  background: var(--navy-raised);
+}
+.terminal:hover::before {
+  transform: scaleY(1);
+}
+.terminal__sym {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  color: var(--chalk);
+}
+.terminal__text {
+  min-width: 0;
+}
+.terminal__text strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+}
+.terminal__text span {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--chalk-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.terminal__go {
+  margin-left: auto;
+  flex: none;
+  color: var(--chalk-dim);
+}
+.terminal:hover .terminal__go {
+  color: var(--orange);
+}
+.terminal--live {
+  background: var(--whats);
+  border-color: #04301a;
+  margin-bottom: var(--s-2);
+}
+.terminal--live:hover {
+  background: #34e277;
+}
+.terminal--live::before {
+  content: none;
+}
+.terminal--live .terminal__text strong,
+.terminal--live .terminal__go {
+  color: #04301a;
+}
+.terminal--live .terminal__text span {
+  color: rgba(4, 48, 26, 0.78);
+}
+.terminal--live .terminal__sym {
+  border-color: rgba(4, 48, 26, 0.5);
+  color: #04301a;
+}
+.terminals__foot {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-strong);
+  display: grid;
+  gap: var(--s-2);
+}
+
+/* ============================================================
+   UTILIDADES
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.skip {
+  position: absolute;
+  left: var(--margin);
+  top: 0;
+  z-index: 100;
+  transform: translateY(-140%);
+  background: var(--orange);
+  color: var(--navy);
+  padding: 0.7rem 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+.skip:focus {
+  transform: translateY(0);
+}
+
+/* ---------- Entrada: um único momento autoral ----------
+   O traço do circuito se desenha. Nada mais anima na entrada. */
+@media print {
+  .circuit__live {
+    stroke-dashoffset: 0 !important;
+  }
+  .dock,
+  .titleblock {
+    display: none;
+  }
+  .sheet--plan,
+  .sheet--action {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}

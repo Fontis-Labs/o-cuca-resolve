@@ -1,0 +1,86 @@
+{
+  "seo_titulo": "SOCORRO! O CUCA RESOLVE — Marido de aluguel e assistência técnica em Socorro-SP",
+  "seo_descricao": "Manutenção residencial e assistência técnica em Socorro-SP e região: elétrica, hidráulica, pequenos reparos, montagem de móveis, eletrodomésticos selecionados e manutenção de computadores. Orçamento pelo WhatsApp.",
+
+  "hero_titulo": "Problema apareceu?",
+  "hero_destaque": "Chama o Cuca.",
+  "hero_texto": "Um contato só para os pequenos problemas do dia a dia: elétrica, hidráulica, reparos, montagem, eletrodomésticos e computadores. Você manda uma foto, recebe a estimativa e aprova antes de qualquer coisa acontecer.",
+
+  "etapas_titulo": "Como funciona",
+  "etapas_texto": "Sem enrolação e sem surpresa: nada é executado antes de você aprovar.",
+  "etapas": [
+    {
+      "titulo": "Manda o problema no WhatsApp",
+      "texto": "Conte o que está acontecendo e, se puder, envie uma foto ou vídeo do local ou do equipamento. É o que permite entender o serviço antes de sair."
+    },
+    {
+      "titulo": "Recebe a estimativa",
+      "texto": "Com as informações em mãos, você recebe o valor estimado e as condições. Nada é executado sem a sua aprovação."
+    },
+    {
+      "titulo": "Agendamos e resolvemos",
+      "texto": "Data e período combinados, chegada avisada, serviço testado na sua frente e valor final confirmado no encerramento."
+    }
+  ],
+
+  "fronteira_titulo": "O que o Cuca não faz",
+  "fronteira_texto": "Quase ninguém publica isto, e é exatamente por isso que está aqui. Serviço aceito no improviso é serviço malfeito — preferimos dizer não e indicar quem faz.",
+  "fronteira_itens": [
+    {
+      "verdict": "Encaminhamos",
+      "texto": "Grandes reformas, intervenções estruturais e qualquer problema que exija outro especialista ou outra estrutura."
+    },
+    {
+      "verdict": "Recusamos",
+      "texto": "Serviço elétrico incompatível com o treinamento, a ferramenta ou a exigência de segurança aplicável. Sem exceção."
+    },
+    {
+      "verdict": "Avaliamos antes",
+      "texto": "Fixação estrutural, peça de grande dimensão ou risco elevado. Só confirmamos depois de ver foto, vídeo ou o local."
+    },
+    {
+      "verdict": "Combinamos antes",
+      "texto": "Backup, recuperação de dados e reparo de placa: escopo e responsabilidade ficam definidos por escrito antes de começar."
+    }
+  ],
+
+  "confianca_titulo": "Transparência antes de tudo",
+  "confianca_itens": [
+    {
+      "titulo": "Nada é prometido sem diagnóstico",
+      "texto": "Primeiro entendemos o problema. Só depois falamos de prazo, escopo e valor."
+    },
+    {
+      "titulo": "Mudança de escopo é sempre combinada",
+      "texto": "Se durante o serviço aparecer algo a mais, você é avisado e aprova antes de qualquer execução."
+    },
+    {
+      "titulo": "O serviço e o valor ficam registrados",
+      "texto": "Você recebe por escrito o que foi feito e quanto custou, com validade de 7 dias no orçamento."
+    }
+  ],
+
+  "publicos_titulo": "Quem atendemos",
+  "publicos_texto": "Do apartamento à pousada, o mesmo contato resolve.",
+  "publicos": [
+    {
+      "titulo": "Residências",
+      "texto": "Casas e apartamentos que precisam de um profissional de confiança para os reparos e instalações do dia a dia."
+    },
+    {
+      "titulo": "Imobiliárias",
+      "texto": "Pequenos chamados de manutenção centralizados em um contato só, com registro do serviço e do valor."
+    },
+    {
+      "titulo": "Pousadas e Airbnb",
+      "texto": "Reparos entre reservas e durante a operação, com agendamento e comunicação organizada."
+    },
+    {
+      "titulo": "Pequenos negócios",
+      "texto": "Comércios, escritórios e prestadores que não querem procurar um profissional diferente para cada problema."
+    }
+  ],
+
+  "cta_titulo": "Não sabe quem chamar?",
+  "cta_texto": "Manda uma mensagem contando o que precisa. É rápido, é sem compromisso, e você aprova antes de qualquer coisa acontecer."
+}

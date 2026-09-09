@@ -1,0 +1,75 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 24, class: className } = Astro.props;
+
+/**
+ * Símbolos de prancha: geometria pura, traço único, ponta quadrada e junta em
+ * esquadria. É o que separa o desenho técnico do ícone de biblioteca — nenhuma
+ * ponta arredondada em lugar nenhum.
+ */
+const drawn: Record<string, string[]> = {
+  // --- Famílias de serviço (símbolos em planta) ---
+  casa: ['M3 10.5 12 3l9 7.5', 'M5.5 9v12h13V9', 'M10 21v-6.5h4V21'],
+  eletrica: ['M13.5 2 5 13.5h5.5L9 22l9-12h-5.5L14 2z'],
+  hidraulica: ['M12 21.5 5.5 15 12 2.5 18.5 15z', 'M8.6 15.5h6.8'],
+  eletro: [
+    'M4.5 2.5h15v19h-15z',
+    'M4.5 7h15',
+    'M7.5 4.75h2',
+    'M12 19a5 5 0 1 0 0-10 5 5 0 0 0 0 10z',
+  ],
+  computador: ['M2 4h20v12H2z', 'M2 16h20', 'M9.5 21h5', 'M12 16v5'],
+
+  // --- Canais ---
+  instagram: [
+    'M4 4h16v16H4z',
+    'M12 16.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z',
+    'M17 6.5h.9',
+  ],
+  mercadolivre: ['M2 8h20', 'm4 8 2-4h12l2 4', 'M4.5 8v12h15V8', 'M9 12.5a3 3 0 0 0 6 0'],
+  shopee: ['M4.5 7.5h15l-1 14h-13z', 'M8.5 7.5V5a3.5 3.5 0 0 1 7 0v2.5'],
+  email: ['M2 5h20v14H2z', 'm2 5.5 10 7.5 10-7.5'],
+
+  // --- Marcas de prancha ---
+  local: ['M12 22s-7.5-7-7.5-12a7.5 7.5 0 0 1 15 0C19.5 15 12 22 12 22z', 'M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'],
+  telefone: [
+    'M8.5 2.5 11 7l-2.5 2.5a14 14 0 0 0 6 6L17 13l4.5 2.5v4.5a1.5 1.5 0 0 1-1.6 1.5C10.6 20.9 3.1 13.4 2.5 4.1A1.5 1.5 0 0 1 4 2.5z',
+  ],
+  seta: ['M4 12h15', 'm13 6 6 6-6 6'],
+  check: ['m4 12.5 5.2 5.2L20 6.5'],
+  cruz: ['M12 2v20', 'M2 12h20'],
+};
+
+/** Marca preenchida: só o WhatsApp, porque é logotipo de plataforma. */
+const filled: Record<string, string> = {
+  whatsapp:
+    'M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.23-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.18-.3-.02-.46.13-.6.13-.14.35-.35.52-.52.17-.18.23-.3.35-.5.11-.2.05-.37-.03-.52-.09-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.03 1.02-1.03 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.57-.35M12.05 21.78a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.42-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.15 1.59 5.95L0 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41',
+};
+
+const isFilled = name in filled;
+const paths = isFilled ? [filled[name]] : (drawn[name] ?? drawn.check);
+/** Traço mais fino nos símbolos grandes: mantém o peso óptico constante. */
+const weight = isFilled ? undefined : size >= 40 ? 1.4 : size >= 28 ? 1.55 : 1.7;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill={isFilled ? 'currentColor' : 'none'}
+  stroke={isFilled ? 'none' : 'currentColor'}
+  stroke-width={weight}
+  stroke-linecap={isFilled ? undefined : 'square'}
+  stroke-linejoin={isFilled ? undefined : 'miter'}
+  class={className}
+  aria-hidden="true"
+  focusable="false"
+>
+  {paths.map((d) => <path d={d} />)}
+</svg>

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+.env
+.env.production
+
+# Capturas de revisão do Impeccable (5 MB) — o contrato de direção em
+# .impeccable/surfaces/ fica versionado; as imagens, não.
+.impeccable/review/
+.impeccable/questions/

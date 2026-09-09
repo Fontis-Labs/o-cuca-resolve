@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-09T00:00:00Z",
+  "title": "Design System: Socorro! O Cuca Resolve",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Drafting Navy",
+        "canonical": "#0b1f3d",
+        "tonalRamp": ["oklch(15% 0.052 258)", "oklch(26% 0.052 258)", "oklch(37% 0.052 258)", "oklch(48% 0.052 258)", "oklch(59% 0.052 258)", "oklch(70% 0.052 258)", "oklch(82% 0.052 258)", "oklch(93% 0.052 258)"]
+      },
+      "navy-raised": {
+        "role": "neutral",
+        "displayName": "Navy Raised",
+        "canonical": "#13294d",
+        "tonalRamp": ["oklch(15% 0.055 259)", "oklch(26% 0.055 259)", "oklch(37% 0.055 259)", "oklch(48% 0.055 259)", "oklch(59% 0.055 259)", "oklch(70% 0.055 259)", "oklch(82% 0.055 259)", "oklch(93% 0.055 259)"]
+      },
+      "orange": {
+        "role": "primary",
+        "displayName": "Live Orange",
+        "canonical": "#f5811f",
+        "tonalRamp": ["oklch(15% 0.176 51)", "oklch(26% 0.176 51)", "oklch(37% 0.176 51)", "oklch(48% 0.176 51)", "oklch(59% 0.176 51)", "oklch(71% 0.176 51)", "oklch(82% 0.176 51)", "oklch(93% 0.176 51)"]
+      },
+      "orange-ink": {
+        "role": "primary",
+        "displayName": "Burnt Orange Ink",
+        "canonical": "#a8500a",
+        "tonalRamp": ["oklch(15% 0.135 55)", "oklch(26% 0.135 55)", "oklch(37% 0.135 55)", "oklch(48% 0.135 55)", "oklch(59% 0.135 55)", "oklch(70% 0.135 55)", "oklch(82% 0.135 55)", "oklch(93% 0.135 55)"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#f4f1ea",
+        "tonalRamp": ["oklch(15% 0.011 85)", "oklch(26% 0.011 85)", "oklch(37% 0.011 85)", "oklch(48% 0.011 85)", "oklch(59% 0.011 85)", "oklch(70% 0.011 85)", "oklch(82% 0.011 85)", "oklch(95% 0.011 85)"]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "#eef3fa",
+        "tonalRamp": ["oklch(15% 0.012 250)", "oklch(26% 0.012 250)", "oklch(37% 0.012 250)", "oklch(48% 0.012 250)", "oklch(59% 0.012 250)", "oklch(70% 0.012 250)", "oklch(82% 0.012 250)", "oklch(96% 0.012 250)"]
+      },
+      "chalk-dim": {
+        "role": "neutral",
+        "displayName": "Chalk Dim",
+        "canonical": "#93a9c6",
+        "tonalRamp": ["oklch(15% 0.043 251)", "oklch(26% 0.043 251)", "oklch(37% 0.043 251)", "oklch(48% 0.043 251)", "oklch(59% 0.043 251)", "oklch(71% 0.043 251)", "oklch(82% 0.043 251)", "oklch(93% 0.043 251)"]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#14203a",
+        "tonalRamp": ["oklch(15% 0.045 262)", "oklch(26% 0.045 262)", "oklch(37% 0.045 262)", "oklch(48% 0.045 262)", "oklch(59% 0.045 262)", "oklch(70% 0.045 262)", "oklch(82% 0.045 262)", "oklch(93% 0.045 262)"]
+      },
+      "graphite-dim": {
+        "role": "neutral",
+        "displayName": "Graphite Dim",
+        "canonical": "#55657f",
+        "tonalRamp": ["oklch(15% 0.041 258)", "oklch(26% 0.041 258)", "oklch(37% 0.041 258)", "oklch(48% 0.041 258)", "oklch(59% 0.041 258)", "oklch(70% 0.041 258)", "oklch(82% 0.041 258)", "oklch(93% 0.041 258)"]
+      },
+      "whatsapp-green": {
+        "role": "secondary",
+        "displayName": "WhatsApp Green (platform ink)",
+        "canonical": "#25d366",
+        "tonalRamp": ["oklch(15% 0.198 152)", "oklch(26% 0.198 152)", "oklch(37% 0.198 152)", "oklch(48% 0.198 152)", "oklch(59% 0.198 152)", "oklch(76% 0.198 152)", "oklch(85% 0.198 152)", "oklch(93% 0.198 152)"]
+      },
+      "burnt-dim": {
+        "role": "neutral",
+        "displayName": "Burnt Dim",
+        "canonical": "#4a2a06",
+        "tonalRamp": ["oklch(15% 0.075 62)", "oklch(26% 0.075 62)", "oklch(37% 0.075 62)", "oklch(48% 0.075 62)", "oklch(59% 0.075 62)", "oklch(70% 0.075 62)", "oklch(82% 0.075 62)", "oklch(93% 0.075 62)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The page's one billboard, on h1 only. Uppercase Archivo 800 at 0.94 line-height, max 20ch; the highlighted line takes the live ink." },
+      "headline": { "displayName": "Headline", "purpose": "Sheet headings on h2, max 17ch (15ch on the flooded action sheet)." },
+      "title": { "displayName": "Title", "purpose": "Service family names, uppercase. Index rows use a 1.125rem cut." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "Default h3 — circuit steps and the trust creed." },
+      "lead": { "displayName": "Lead", "purpose": "Supporting sentence under a display or headline, dim ink, max 46ch." },
+      "body": { "displayName": "Body", "purpose": "Running copy with tabular numerals. Measures capped at 62ch / 54ch / 40ch by context." },
+      "note": { "displayName": "Note (annotation)", "purpose": "Chivo Mono annotation only: sheet numbers, step codes, stamp and colophon fields, nav links, verdicts. Never body copy." },
+      "note-micro": { "displayName": "Note Micro", "purpose": "Colophon column headings and the 'Regra' tag inside a dimension callout." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "state", "value": "0.15s ease", "purpose": "Color-only hover on links, nav items and colophon entries." },
+      { "name": "control", "value": "0.18s ease", "purpose": "Background, border and transform changes on actions and terminal rows." },
+      { "name": "reveal", "value": "0.25s ease", "purpose": "Opacity, transform and visibility of the floating dock as it enters." },
+      { "name": "draw", "value": "1.5s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The circuit line drawing itself via stroke-dashoffset 1 to 0 on pathLength=1. The page's single authored motion moment." },
+      { "name": "draw-vertical", "value": "1.3s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The same draw below 780px, as transform: scaleY() on the vertical spine." },
+      { "name": "reduced", "value": "0.01ms", "purpose": "All animation and transition durations under prefers-reduced-motion: reduce. The circuit's default state is already drawn, so nothing is lost." }
+    ],
+    "breakpoints": [
+      { "name": "compact-cta", "value": "560px" },
+      { "name": "dock-icon-only", "value": "640px" },
+      { "name": "sheet-number", "value": "700px" },
+      { "name": "families-grid", "value": "720px" },
+      { "name": "rows-resolve", "value": "760px" },
+      { "name": "circuit-horizontal", "value": "780px" },
+      { "name": "creed", "value": "860px" },
+      { "name": "closing-action", "value": "880px" },
+      { "name": "nav-links", "value": "900px" },
+      { "name": "sheet-split", "value": "1040px" },
+      { "name": "sheet-measure", "value": "1240px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "act",
+      "description": "The live control: orange ground, navy ink, 11px chamfered bottom-right corner. Used wherever the visitor can open WhatsApp.",
+      "html": "<a class=\"ds-act\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12.05 21.78a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.42-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.15 1.59 5.95L0 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41\"/></svg>Pedir orçamento agora</a>",
+      "css": ".ds-act { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 52px; padding: 0.85rem 1.6rem; border: 1.5px solid var(--orange, #f5811f); background: var(--orange, #f5811f); color: var(--navy, #0b1f3d); font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: -0.005em; text-decoration: none; cursor: pointer; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%); transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease; } .ds-act svg { flex: none; } .ds-act:hover { background: #ff9436; border-color: #ff9436; } .ds-act:focus-visible { outline: 2px solid var(--orange, #f5811f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Inverted Action",
+      "kind": "button",
+      "refersTo": "act-invert",
+      "description": "The primary action on the flooded orange sheet, where orange-on-orange is impossible and green would be the worst adjacency on the page.",
+      "html": "<div class=\"ds-invert-stage\"><a class=\"ds-act-invert\" href=\"#\">Chamar o Cuca no WhatsApp</a></div>",
+      "css": ".ds-invert-stage { background: var(--orange, #f5811f); padding: 24px; } .ds-act-invert { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 52px; padding: 0.85rem 1.6rem; border: 1.5px solid var(--navy, #0b1f3d); background: var(--navy, #0b1f3d); color: var(--paper, #f4f1ea); font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; font-weight: 700; text-decoration: none; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%); transition: background-color 0.18s ease, border-color 0.18s ease; } .ds-act-invert:hover { background: #1b3865; border-color: #1b3865; } .ds-act-invert:focus-visible { outline: 2px solid var(--navy, #0b1f3d); outline-offset: 3px; }"
+    },
+    {
+      "name": "WhatsApp Dock",
+      "kind": "button",
+      "refersTo": "dock",
+      "description": "Fixed bottom-right action carrying platform green. Hidden until the in-page primary action scrolls out of view; collapses to icon-only below 640px.",
+      "html": "<a class=\"ds-dock\" href=\"#\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12.05 21.78a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.42-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.15 1.59 5.95L0 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41\"/></svg><span>Chamar o Cuca</span></a>",
+      "css": ".ds-dock { display: inline-flex; align-items: center; gap: 0.55rem; min-height: 52px; padding: 0.8rem 1.25rem; background: var(--whats, #25d366); color: #04301a; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-weight: 700; text-decoration: none; border: 1.5px solid #04301a; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%); transition: background-color 0.18s ease, opacity 0.25s ease, transform 0.25s ease; } .ds-dock:hover { background: #34e277; } .ds-dock:focus-visible { outline: 2px solid #04301a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Service Family Column",
+      "kind": "card",
+      "refersTo": "fam",
+      "description": "The system's answer to a card: no box and no background. A 2px top rule marks a directly-performed family; a dashed rule in the dim ink marks restricted scope.",
+      "html": "<div class=\"ds-fam-stage\"><article class=\"ds-fam\"><div class=\"ds-fam__id\"><svg class=\"ds-fam__sym\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.55\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M12 21.5 5.5 15 12 2.5 18.5 15z\"/><path d=\"M8.6 15.5h6.8\"/></svg><h3>Hidráulica</h3></div><p class=\"ds-fam__what\">Vazamento, entupimento e troca de peça com teste no fim.</p><ul class=\"ds-fam__list\"><li>Torneira e registro pingando</li><li>Chuveiro sem esquentar</li></ul><a class=\"ds-fam__act\" href=\"#\">Pedir orçamento<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 12h15\"/><path d=\"m13 6 6 6-6 6\"/></svg></a></article></div>",
+      "css": ".ds-fam-stage { background: #f4f1ea; padding: 24px; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-fam { display: flex; flex-direction: column; max-width: 22rem; padding: 1.25rem 1.25rem 1.25rem 0; border-top: 2px solid #14203a; color: #14203a; } .ds-fam__id { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; } .ds-fam__sym { color: #a8500a; flex: none; } .ds-fam h3 { margin: 0; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; text-transform: uppercase; } .ds-fam__what { margin: 0; font-size: 0.9375rem; color: #55657f; } .ds-fam__list { display: grid; gap: 0.3rem; margin: 1.25rem 0 0; padding: 0; list-style: none; } .ds-fam__list li { display: flex; gap: 0.5rem; font-size: 0.875rem; color: #55657f; } .ds-fam__list li::before { content: ''; flex: none; width: 7px; height: 7px; margin-top: 0.5em; border: 1.5px solid #a8500a; } .ds-fam__act { margin-top: auto; padding-top: 1.25rem; display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; align-self: flex-start; font-size: 0.9375rem; font-weight: 700; color: #a8500a; text-decoration: none; } .ds-fam__act svg { transition: transform 0.15s ease; } .ds-fam__act:hover { color: #0b1f3d; text-decoration: underline; text-decoration-thickness: 2px; } .ds-fam__act:hover svg { transform: translateX(4px); } .ds-fam__act:focus-visible { outline: 2px solid #a8500a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Dimension Callout",
+      "kind": "custom",
+      "refersTo": "callout",
+      "description": "A real cota: a 26px leader line in live ink with a perpendicular terminator tick, carrying the protection rule attached to a service family.",
+      "html": "<div class=\"ds-callout-stage\"><p class=\"ds-callout\"><span><b>Regra</b>Rede elétrica de rua e padrão de entrada: não mexemos.</span></p></div>",
+      "css": ".ds-callout-stage { background: #f4f1ea; padding: 24px; } .ds-callout { position: relative; display: grid; grid-template-columns: 26px 1fr; gap: 0.75rem; align-items: start; margin: 0; max-width: 24rem; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.8125rem; line-height: 1.45; color: #55657f; } .ds-callout::before { content: ''; margin-top: 0.62em; height: 1px; background: #a8500a; } .ds-callout::after { content: ''; position: absolute; left: 0; top: 0.62em; width: 1px; height: 7px; margin-top: -3px; background: #a8500a; } .ds-callout b { display: block; font-family: 'Chivo Mono', ui-monospace, Menlo, monospace; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #a8500a; margin-bottom: 0.25rem; }"
+    },
+    {
+      "name": "Circuit Rail",
+      "kind": "custom",
+      "refersTo": "circuit",
+      "description": "The service journey drawn as a rail with numbered nodes. The orange line draws itself once on scroll; the default state is already drawn, so the signature survives with no JavaScript.",
+      "html": "<div class=\"ds-circuit-stage\"><div class=\"ds-circuit\"><div class=\"ds-circuit__rail\" aria-hidden=\"true\"><svg class=\"ds-circuit__svg\" viewBox=\"0 0 1000 3\" preserveAspectRatio=\"none\"><line class=\"ds-circuit__live\" x1=\"0\" y1=\"1.5\" x2=\"1000\" y2=\"1.5\" pathLength=\"1\" vector-effect=\"non-scaling-stroke\"/></svg><span class=\"ds-circuit__dot\"></span><span class=\"ds-circuit__dot\"></span><span class=\"ds-circuit__dot\"></span><span class=\"ds-circuit__end\"></span></div><ol class=\"ds-circuit__nodes\"><li><span class=\"ds-note\">Etapa 01</span><h3>Triagem</h3></li><li><span class=\"ds-note\">Etapa 02</span><h3>Estimativa</h3></li><li><span class=\"ds-note\">Etapa 03</span><h3>Execução</h3></li></ol></div></div>",
+      "css": ".ds-circuit-stage { background: #0b1f3d; padding: 32px 24px; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; color: #eef3fa; } .ds-circuit__rail { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 2rem; position: relative; height: 0; border-top: 1px dashed rgba(147,169,198,0.62); margin-bottom: 1.25rem; } .ds-circuit__svg { position: absolute; top: -1.5px; left: 0; width: 100%; height: 3px; overflow: visible; } .ds-circuit__live { stroke: #f5811f; stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ds-draw 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; } @keyframes ds-draw { to { stroke-dashoffset: 0; } } @media (prefers-reduced-motion: reduce) { .ds-circuit__live { animation: none; stroke-dashoffset: 0; } } .ds-circuit__dot { width: 13px; height: 13px; margin-top: -7px; border: 2px solid #f5811f; border-radius: 50%; background: #0b1f3d; } .ds-circuit__end { position: absolute; right: 0; top: -6px; width: 2px; height: 13px; background: #f5811f; } .ds-circuit__nodes { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 2rem; margin: 0; padding: 0; list-style: none; } .ds-circuit__nodes h3 { margin: 0.35rem 0 0; font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.012em; line-height: 1.25; } .ds-note { display: block; font-family: 'Chivo Mono', ui-monospace, Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #f5811f; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Boundary Row (poché)",
+      "kind": "custom",
+      "refersTo": "limit",
+      "description": "A verdict row from the scope sheet. Dashed key = conditional; dotted key plus a 45-degree poché hatch band in the margin = out of scope.",
+      "html": "<div class=\"ds-limit-stage\"><div class=\"ds-limit ds-limit--out\"><span class=\"ds-limit__verdict\">Encaminhamos</span><p>Obra estrutural e reforma completa. <b>Indicamos quem faz.</b></p></div></div>",
+      "css": ".ds-limit-stage { background: #0b1f3d; padding: 24px 24px 24px 40px; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-limit { position: relative; display: grid; grid-template-columns: 13rem 1fr; gap: 0.375rem 2rem; padding-block: 1.25rem; border-top: 1.5px solid rgba(147,169,198,0.62); border-bottom: 1px solid rgba(147,169,198,0.34); align-items: start; } .ds-limit__verdict { display: flex; align-items: center; gap: 0.5rem; font-family: 'Chivo Mono', ui-monospace, Menlo, monospace; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #f5811f; } .ds-limit__verdict::before { content: ''; width: 26px; height: 0; flex: none; border-top: 2px dashed #f5811f; } .ds-limit--out .ds-limit__verdict::before { border-top-style: dotted; } .ds-limit--out::before { content: ''; position: absolute; left: -1.1rem; top: 0; bottom: 0; width: 5px; background: repeating-linear-gradient(45deg, rgba(147,169,198,0.62) 0 1px, transparent 1px 5px); } .ds-limit p { margin: 0; font-size: 1rem; color: #eef3fa; max-inline-size: 62ch; } .ds-limit p b { font-weight: 700; }"
+    },
+    {
+      "name": "Terminal Row",
+      "kind": "nav",
+      "refersTo": "terminal",
+      "description": "A channel row on the links sheet. Hover raises the ground one tone and grows a 2px live-ink bar from the top of the left edge — a border reveal that never touches layout.",
+      "html": "<div class=\"ds-terminal-stage\"><a class=\"ds-terminal\" href=\"#\"><span class=\"ds-terminal__sym\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 4h16v16H4z\"/><path d=\"M12 16.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z\"/><path d=\"M17 6.5h.9\"/></svg></span><span class=\"ds-terminal__text\"><strong>Instagram</strong><span>instagram.com/ocucaresolve</span></span><svg class=\"ds-terminal__go\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 12h15\"/><path d=\"m13 6 6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-terminal-stage { background: #0b1f3d; padding: 16px; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-terminal { position: relative; display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; border-top: 1px solid rgba(147,169,198,0.34); border-bottom: 1px solid rgba(147,169,198,0.34); color: #eef3fa; text-decoration: none; transition: background-color 0.18s ease; } .ds-terminal::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #f5811f; transform: scaleY(0); transform-origin: top; transition: transform 0.18s ease; } .ds-terminal:hover { background: #13294d; } .ds-terminal:hover::before { transform: scaleY(1); } .ds-terminal:focus-visible { outline: 2px solid #f5811f; outline-offset: 3px; } .ds-terminal__sym { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border: 1px solid rgba(147,169,198,0.62); color: #eef3fa; } .ds-terminal__text { min-width: 0; } .ds-terminal__text strong { display: block; font-size: 1rem; font-weight: 700; letter-spacing: -0.012em; } .ds-terminal__text span { display: block; font-size: 0.8125rem; color: #93a9c6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-terminal__go { margin-left: auto; flex: none; color: #93a9c6; } .ds-terminal:hover .ds-terminal__go { color: #f5811f; }"
+    },
+    {
+      "name": "Sheet Stamp",
+      "kind": "card",
+      "refersTo": "stamp",
+      "description": "The drawing's title block: a bordered plate holding the crest as a seal of authorship plus mono fields for signature, category and region.",
+      "html": "<div class=\"ds-stamp-stage\"><div class=\"ds-stamp\"><span class=\"ds-stamp__seal\">CR</span><div class=\"ds-stamp__fields\"><b>Da casa ao computador, o Cuca resolve.</b><span class=\"ds-note-dim\">Manutenção Residencial e Assistência Técnica</span><span class=\"ds-note-live\">Socorro-SP e região</span></div></div></div>",
+      "css": ".ds-stamp-stage { background: #0b1f3d; padding: 24px; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; color: #eef3fa; } .ds-stamp { display: grid; grid-template-columns: auto 1fr; gap: 0 1.25rem; align-items: center; border: 1px solid rgba(147,169,198,0.62); padding: 0.75rem 1.25rem; width: fit-content; } .ds-stamp__seal { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(147,169,198,0.34); background: #f4f1ea; color: #0b1f3d; font-weight: 800; font-size: 0.9375rem; } .ds-stamp__fields { display: grid; gap: 0.15rem; } .ds-stamp__fields b { font-size: 0.8125rem; font-weight: 700; letter-spacing: -0.01em; } .ds-note-dim, .ds-note-live { font-family: 'Chivo Mono', ui-monospace, Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; font-variant-numeric: tabular-nums; } .ds-note-dim { color: #93a9c6; } .ds-note-live { color: #f5811f; }"
+    },
+    {
+      "name": "Notation Legend",
+      "kind": "chip",
+      "refersTo": "legend",
+      "description": "Three key lines that declare the notation before it is used: solid = performed directly, dashed = restricted scope, dotted = out of scope.",
+      "html": "<div class=\"ds-legend-stage\"><ul class=\"ds-legend\"><li><span class=\"ds-legend__key\"></span><span class=\"ds-legend__label\">Cheio — atendimento direto</span></li><li><span class=\"ds-legend__key ds-legend__key--eval\"></span><span class=\"ds-legend__label\">Tracejado — escopo restrito</span></li><li><span class=\"ds-legend__key ds-legend__key--none\"></span><span class=\"ds-legend__label\">Pontilhado — fora do escopo</span></li></ul></div>",
+      "css": ".ds-legend-stage { background: #f4f1ea; padding: 24px; } .ds-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; margin: 0; padding: 0; list-style: none; } .ds-legend li { display: flex; align-items: center; gap: 0.55rem; } .ds-legend__key { width: 30px; height: 0; flex: none; border-top: 2px solid #14203a; } .ds-legend__key--eval { border-top-style: dashed; border-color: #55657f; } .ds-legend__key--none { border-top-style: dotted; border-color: #55657f; } .ds-legend__label { font-family: 'Chivo Mono', ui-monospace, Menlo, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #55657f; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Prancha (The Drafting Sheet)",
+    "overview": "The product has no photography, no reviews, no numbers and no prices, and nothing may be invented. So the interface does not claim to be trustworthy — it behaves like a technical document, and trust is what a document earns by being legible. Every surface is a sheet from a drawing folder: navy plan sheets alternating with light detail sheets, numbered in the margin (Folha 02 through Folha 05), ruled with 40px margin ticks, cornered with registration crosses, and drawn on a two-level drafting grid (24px fine, 120px major). The apparatus is not decoration; it is what makes the page read as a record rather than an advertisement.\n\nThe system runs on two inks and the paper. Navy (#0b1f3d) holds the surface; orange (#f5811f) is the live ink and marks only what is active or available. There is exactly one region in the whole page where orange floods (the closing action sheet), and its rarity is the argument. The single third color, WhatsApp green, is platform ink for one action and belongs to the platform, not to the brand.\n\nThe central rule is that line weight carries meaning. A solid 2px rule tops a service the business performs directly; a dashed rule tops a family with restricted scope; a dotted rule and a 45° poché hatch band mark what is out of scope. A legend at the head of the services sheet declares all three, so the notation closes: nothing is drawn that the reader has not been taught to read. Corners are square, elevation is declared by border and tone only — there is not one box-shadow in the stylesheet — and the only authored motion in the page is the orange circuit line drawing itself once on scroll.",
+    "keyCharacteristics": [
+      "Two inks and the paper: navy ground, orange live ink, light paper for detail sheets.",
+      "Line weight is semantic: solid = direct service, dashed = restricted scope, dotted/poché = out of scope.",
+      "Zero shadows, zero rounded corners (one exception: the 13px circular circuit node).",
+      "Drafting apparatus as structure: sheet numbers, margin rules, registration marks, title block, stamp.",
+      "Archivo 800 at billboard scale for display; Chivo Mono for annotation and measurement only.",
+      "Hand-authored icon geometry on a 24 grid with square caps and miter joins — no library glyphs.",
+      "One authored motion moment in the entire page; the default, no-JS state is already drawn."
+    ],
+    "rules": [
+      { "name": "The Two Inks Rule", "body": "Navy, orange, and the paper. No third brand color is ever introduced. WhatsApp green is platform ink and appears only on the two WhatsApp-specific surfaces; it never spreads into brand chrome, and it never touches the flooded orange sheet.", "section": "colors" },
+      { "name": "The Live Ink Rule", "body": "Orange marks only what is active, available, or currently drawn. It is never a background wash for atmosphere, never a decorative accent on a divider, and it floods exactly one region in the page: the closing action sheet.", "section": "colors" },
+      { "name": "The Contextual Live Ink Rule", "body": "Never hardcode orange in a component. Use --ink-live, which resolves to the live orange on navy sheets and the burnt orange ink on paper sheets. On the flooded action sheet the sheet itself re-points --chalk, --chalk-dim, --line and --line-strong to navy values; components inherit and stay legible with no per-sheet overrides.", "section": "colors" },
+      { "name": "The Mono-Is-Measurement Rule", "body": "Chivo Mono is for annotation, sheet fields, codes, verdicts and measurement. It never sets body copy, never sets a heading, and never appears in a sentence a visitor reads for meaning rather than for reference.", "section": "typography" },
+      { "name": "The No-Eyebrow Rule", "body": "There is no eyebrow, kicker, or category label above a heading anywhere in this system, and none may be added. The mono labels that sit above headings are drawing annotations carrying real data — a sheet number, a step code (Etapa 01), an index number, a verdict — and the test is exact: if the label would still make sense with its text removed, it is an eyebrow and does not ship.", "section": "typography" },
+      { "name": "The One Billboard Rule", "body": "Only h1 gets display scale, and only one word or phrase inside it takes the live ink. A second highlighted phrase in the same headline halves the value of both.", "section": "typography" },
+      { "name": "The Sheet Alternation Rule", "body": "Consecutive sheets never share a ground. A new sheet is either a navy plan sheet or a light detail sheet, and it announces itself with a margin sheet number in mono (Folha 02 onward) plus a 1.5px structural rule above its head.", "section": "layout" },
+      { "name": "The Anchor Clearance Rule", "body": "The title block is sticky at 63px (62px min-height plus its 1px bottom rule). Every [id] in the system therefore carries scroll-margin-top: 78px, so an in-page anchor never delivers its target underneath the chrome.", "section": "layout" },
+      { "name": "The No-Shadow Rule", "body": "Elevation is declared by border and ground only. If a surface needs to feel lifted, give it a stronger rule or a different ground — never a shadow, never a glow, never a gradient scrim.", "section": "elevation" },
+      { "name": "The Square Corner Rule", "body": "Radius is 0. The only curve permitted is the circular circuit node, because a node in a diagram is a circle.", "section": "shapes" },
+      { "name": "The Chamfer Rule", "body": "The 11px cut corner belongs to filled action surfaces only. Outline and text controls stay rectangular; the chamfer is what distinguishes 'this is the live control' from 'this is a link'.", "section": "shapes" },
+      { "name": "The Line-Weight Rule", "body": "Line weight carries the rule, and it is the same rule everywhere in the system: solid = performed directly, dashed = restricted scope or conditional, dotted plus poché hatch = out of scope. Never use a dashed border for decoration, and never mark scope with color alone.", "section": "components" },
+      { "name": "The Legend-Closes Rule", "body": "Any notation the page uses must be declared in a legend before it is read. If a new line weight, hatch or symbol is introduced, it either enters the legend or it does not ship.", "section": "components" },
+      { "name": "The Drawn-By-Default Rule", "body": "The default CSS state of any animated element is its finished state. Motion is armed by a script class (.js-draw), never depended upon: with no JavaScript, with reduced motion, or with a missed scroll frame, the signature is fully present.", "section": "components" },
+      { "name": "The Miter Rule", "body": "Icons are drawn, not imported. Square caps, miter joins, a 24 grid, size-compensated stroke weight, and no rounded terminals anywhere. A rounded-cap icon set would contradict every other line on the page.", "section": "components" }
+    ],
+    "dos": [
+      "Do reach for --ink-live instead of a literal orange, so a component drops onto either ground and stays legible (#f5811f on navy, #a8500a on paper).",
+      "Do give a new sheet the opposite ground of the one before it, a margin sheet number in mono, and a 1.5px rule above its head.",
+      "Do declare scope with line weight — solid, dashed, dotted plus poché — and declare it in the legend before using it.",
+      "Do use borders and ground changes for depth, and keep stacking to the three declared layers (60 title block, 70 dock, 100 skip link).",
+      "Do keep interactive targets at 44px minimum and primary actions at 52px, and keep the icon-only compressions at 44px too.",
+      "Do ship animation as an enhancement over an already-finished default state, and cap the page at one authored motion moment.",
+      "Do draw new icons by hand on the 24 grid with square caps and miter joins at the size-compensated stroke weight.",
+      "Do theme every browser surface from the palette — selection, caret, accent color, scrollbar track and thumb, focus ring, tabular numerals — so nothing renders in a default gray.",
+      "Do cap measures: 46ch for a lead, 62ch for a statement, 40ch inside a circuit node."
+    ],
+    "donts": [
+      "Don't add a box-shadow, a glow, or a gradient scrim. The stylesheet has zero shadows and that count is the rule.",
+      "Don't round a corner. Radius is 0 everywhere except the circular circuit node, and the 11px chamfer is the only cut.",
+      "Don't put an eyebrow, kicker, or category label above a heading. A mono label above a heading must carry real data — a sheet number, step code, index number, or verdict.",
+      "Don't set body copy, headings, or any full sentence in Chivo Mono; it is annotation and measurement only.",
+      "Don't introduce a third brand color. WhatsApp green stays on WhatsApp-specific surfaces and never enters the flooded orange sheet, where the inverted navy action is the correct control.",
+      "Don't flood orange in a second region, or scatter it as decorative accent. One flooded sheet, and live ink only on what is active or available.",
+      "Don't wrap content in a card with a background and a border. A top rule and honest column padding carry the grouping.",
+      "Don't animate layout properties on hover (padding, width, margin). The terminal row's live bar uses transform: scaleY() precisely to avoid relayout.",
+      "Don't enlarge the crest into a hero image or an illustration. It is a seal of authorship on a paper plate, at 34–74px.",
+      "Don't let a component depend on JavaScript for its visual signature, and don't add an entrance animation to a section just because it exists."
+    ]
+  }
+}

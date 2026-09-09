@@ -1,0 +1,254 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import home from '../content/home.json';
+import services from '../content/services.json';
+import { site, whatsappUrl, telUrl } from '../lib/site';
+
+const nucleo = services.itens.filter((s) => s.nivel !== 'spec');
+const especiais = services.itens.filter((s) => s.nivel === 'spec');
+
+/** A mensagem já sai do site com o assunto identificado, como manda a triagem. */
+const pedir = (assunto: string) => whatsappUrl(`${site.whatsapp_mensagem} Assunto: ${assunto}.`);
+
+/** Fora de escopo recebe traço fantasma; condicional recebe tracejado. */
+const foraDeEscopo = new Set(['Encaminhamos', 'Recusamos']);
+---
+
+<Base title={home.seo_titulo} description={home.seo_descricao}>
+  <Header />
+
+  <main id="conteudo">
+    <!-- ============ FOLHA 01 — o circuito do atendimento ============ -->
+    <section class="sheet sheet--plan plan01">
+      <span class="sheet__rule sheet__rule--top" aria-hidden="true"></span>
+      <Icon name="cruz" size={15} class="regmark regmark--tr" />
+
+      <div class="sheet__inner">
+        <div class="plan01__top">
+          <div class="plan01__head">
+            <h1 class="display">
+              {home.hero_titulo}<br />
+              <span class="display__live">{home.hero_destaque}</span>
+            </h1>
+
+            <p class="lead">{home.hero_texto}</p>
+
+            <p class="plan01__tel">
+              <Icon name="telefone" size={15} />
+              <span class="note">Prefere ligar?</span>
+              <a href={telUrl()} class="tie">{site.whatsapp_exibicao}</a>
+            </p>
+          </div>
+
+          <!-- Carimbo da prancha: o brasão é selo de autoria, nunca ilustração. -->
+          <div class="stamp">
+            <img
+              src="/logo.jpeg"
+              alt="Brasão do SOCORRO! O CUCA RESOLVE"
+              width="44"
+              height="44"
+              fetchpriority="high"
+            />
+            <div class="stamp__fields">
+              <b>{site.assinatura}</b>
+              <span class="note">{site.categoria}</span>
+              <span class="note note--live">
+                <Icon name="local" size={12} />
+                {site.regiao}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- O percurso, desenhado. A ação primária mora sobre o nó 01. -->
+        <div class="circuit" id="como-funciona" data-circuit>
+          <p class="note circuit__caption">
+            {home.etapas_titulo} &mdash; {home.etapas_texto}
+          </p>
+
+          <div class="circuit__rail" aria-hidden="true">
+            <svg class="circuit__svg" viewBox="0 0 1000 3" preserveAspectRatio="none">
+              <line
+                class="circuit__live"
+                x1="0"
+                y1="1.5"
+                x2="1000"
+                y2="1.5"
+                pathLength="1"
+                vector-effect="non-scaling-stroke"
+              />
+            </svg>
+            <span class="circuit__dot"></span>
+            <span class="circuit__dot"></span>
+            <span class="circuit__dot"></span>
+            <span class="circuit__end"></span>
+          </div>
+
+          <ol class="circuit__nodes">
+            {home.etapas.map((etapa, i) => (
+              <li class="node">
+                <span class="note note--live">Etapa {String(i + 1).padStart(2, '0')}</span>
+                <h3>{etapa.titulo}</h3>
+                <p>{etapa.texto}</p>
+
+                {i === 0 && (
+                  <a
+                    href={whatsappUrl()}
+                    class="act node__act"
+                    target="_blank"
+                    rel="noopener"
+                    data-dock-after
+                  >
+                    <Icon name="whatsapp" size={20} />
+                    Pedir orçamento agora
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOLHA 02 — as cinco frentes ============ -->
+    <section class="sheet sheet--detail" id="servicos">
+      <div class="sheet__inner">
+        <span class="sheet__no note">Folha 02</span>
+        <div class="head">
+          <h2 class="display">{services.titulo}</h2>
+          <p class="lead">{services.texto}</p>
+        </div>
+
+        <!-- A legenda fecha: três pesos de traço, três significados. -->
+        <ul class="legend">
+          <li>
+            <span class="legend__key" aria-hidden="true"></span>
+            <span class="note">Cheio &mdash; atendimento direto</span>
+          </li>
+          <li>
+            <span class="legend__key legend__key--eval" aria-hidden="true"></span>
+            <span class="note">Tracejado &mdash; escopo restrito</span>
+          </li>
+          <li>
+            <span class="legend__key legend__key--none" aria-hidden="true"></span>
+            <span class="note">Pontilhado &mdash; fora do escopo (folha 03)</span>
+          </li>
+        </ul>
+
+        <div class="families">
+          {[...nucleo, ...especiais].map((servico) => (
+            <article class:list={['fam', servico.nivel === 'spec' ? 'fam--spec' : 'fam--core']}>
+              <div class="fam__id">
+                <Icon name={servico.icone} size={30} class="fam__sym" />
+                <h3>{servico.titulo}</h3>
+              </div>
+
+              <p class="fam__what">{servico.resumo}</p>
+
+              {servico.exemplos?.length > 0 && (
+                <ul class="fam__list">
+                  {servico.exemplos.map((exemplo) => <li>{exemplo.texto}</li>)}
+                </ul>
+              )}
+
+              {/* Cota: linha de chamada saindo do símbolo até a regra. */}
+              <p class="callout fam__rule">
+                <span>
+                  <b class="note">Regra</b>
+                  {servico.regra}
+                </span>
+              </p>
+
+              <a class="fam__act" href={pedir(servico.titulo)} target="_blank" rel="noopener">
+                Pedir orçamento
+                <span class="sr-only">de {servico.titulo}</span>
+                <Icon name="seta" size={16} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOLHA 03 — a fronteira ============ -->
+    <section class="sheet sheet--plan" id="fronteira">
+      <div class="sheet__inner">
+        <span class="sheet__no note">Folha 03</span>
+        <div class="head">
+          <h2 class="display">{home.fronteira_titulo}</h2>
+          <p class="lead">{home.fronteira_texto}</p>
+        </div>
+
+        <dl class="limits">
+          {home.fronteira_itens.map((item) => (
+            <div class:list={['limit', foraDeEscopo.has(item.verdict) && 'limit--out']}>
+              <dt class="limit__verdict">{item.verdict}</dt>
+              <dd><p>{item.texto}</p></dd>
+            </div>
+          ))}
+        </dl>
+
+        <div class="creed">
+          {home.confianca_itens.map((item) => (
+            <div class="creed__item">
+              <h3>{item.titulo}</h3>
+              <p>{item.texto}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOLHA 04 — quem atendemos ============ -->
+    <section class="sheet sheet--detail" id="atendimento">
+      <div class="sheet__inner">
+        <span class="sheet__no note">Folha 04</span>
+        <div class="head">
+          <h2 class="display">{home.publicos_titulo}</h2>
+          <p class="lead">{home.publicos_texto}</p>
+        </div>
+
+        <div class="index">
+          {home.publicos.map((publico, i) => (
+            <div class="index__row">
+              <span class="note note--live">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{publico.titulo}</h3>
+              <p>{publico.texto}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AÇÃO ============ -->
+    <section class="sheet sheet--action">
+      <span class="sheet__rule sheet__rule--top" aria-hidden="true"></span>
+      <Icon name="cruz" size={15} class="regmark regmark--tr" />
+      <div class="sheet__inner">
+        <span class="sheet__no note">Folha 05</span>
+        <div class="close">
+          <div>
+            <h2 class="display">{home.cta_titulo}</h2>
+            <p class="lead">{home.cta_texto}</p>
+          </div>
+
+          <div class="close__act">
+            <a href={whatsappUrl()} class="act act--invert" target="_blank" rel="noopener">
+              <Icon name="whatsapp" size={20} />
+              Chamar o Cuca no WhatsApp
+            </a>
+            <p>
+              <span class="note">Ou ligue</span>
+              <a href={telUrl()} class="tie">{site.whatsapp_exibicao}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

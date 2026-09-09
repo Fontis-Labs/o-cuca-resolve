@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import links from '../content/links.json';
+import { site, whatsappUrl } from '../lib/site';
+
+/** O item do WhatsApp não guarda URL no CMS: ela é montada a partir do número. */
+const itens = links.itens
+  .map((item) => ({
+    ...item,
+    url: item.icone === 'whatsapp' ? whatsappUrl() : item.url,
+  }))
+  /* Mesmo critério do rodapé: placeholder do CMS não vira link publicado. */
+  .filter((item) => Boolean(item.url) && !item.url.includes('TROCAR_PELO'));
+---
+
+<Base
+  title={`${site.nome} — Links`}
+  description={`Links oficiais do SOCORRO! O CUCA RESOLVE: WhatsApp, Instagram e lojas. ${site.categoria} em ${site.regiao}.`}
+  bare
+>
+  <main class="sheet sheet--plan terminals">
+    <span class="sheet__rule sheet__rule--top" aria-hidden="true"></span>
+    <Icon name="cruz" size={15} class="regmark regmark--tr" />
+
+    <div class="terminals__inner">
+      <header class="terminals__head">
+        <img
+          src="/logo.jpeg"
+          alt="Brasão do SOCORRO! O CUCA RESOLVE"
+          width="74"
+          height="74"
+          class="terminals__seal"
+          fetchpriority="high"
+        />
+        <h1>Socorro!<br /><b>O Cuca Resolve</b></h1>
+        <p>{links.texto}</p>
+      </header>
+
+      <nav class="terminals__list" aria-label={links.titulo}>
+        {itens.map((item) => (
+          <a
+            href={item.url}
+            class:list={['terminal', { 'terminal--live': item.destaque }]}
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="terminal__sym">
+              <Icon name={item.icone} size={20} />
+            </span>
+            <span class="terminal__text">
+              <strong>{item.rotulo}</strong>
+              <span>{item.descricao}</span>
+            </span>
+            <Icon name="seta" size={18} class="terminal__go" />
+          </a>
+        ))}
+      </nav>
+
+      <footer class="terminals__foot">
+        <p class="note">{site.categoria} &middot; {site.regiao}</p>
+        <p><a href="/" class="tie">Ver o que o Cuca resolve &rarr;</a></p>
+      </footer>
+    </div>
+  </main>
+</Base>
